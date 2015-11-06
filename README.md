@@ -12,7 +12,9 @@
 ## Pro Mac OS
 - Krok 1. Stahnout/nainstalovat MAMP https://www.mamp.info/en/
 - Krok 2. Rozbehnout (Vyresit mozne nesrovnalosti v portech)
-- Krok 3. Vyklonovat git repo do {/Applications/MAMP/htdocs
+- Krok 3. Vyklonovat git repo do /Applications/MAMP/htdocs
+```
     cd /Applications/MAMP/htdocs && git clone git@github.com:jandoubek/fjfi-pvs-inzeraty.git
+```
 
 Projekt by mel byt umisten zde http://localhost:8887/fjfi-pvs-inzeraty/www/ . 8887 je port ktery si nastavujete pro webserver.
