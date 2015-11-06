@@ -8,3 +8,11 @@
 - Krok 4. Dole vpravo se v liště objeví ikona EasyPHP, kliknutím na ní vyskočí okýnko, ve kterém zkontrolujte, že kontrolky Apache a MySQL svítí zeleně a jsou "Started".
 - Krok 5. Spusťte libovolný internetový prohlížeč a zadejte adresu localhostu (http://127.0.0.1/), popřípadě klikněte na šedivou část okýnka s kontrolkami a vyberte možnost "Local Web".
 - Krok 6. v prohlížeči se proklikejte do vašeho projektu a v něm klikněte na složku "www" a webová stránka se spustí.
+ 
+## Pro Mac OS
+- Krok 1. Stahnout/nainstalovat MAMP https://www.mamp.info/en/
+- Krok 2. Rozbehnout (Vyresit mozne nesrovnalosti v portech)
+- Krok 3. Vyklonovat git repo do {/Applications/MAMP/htdocs
+    cd /Applications/MAMP/htdocs && git clone git@github.com:jandoubek/fjfi-pvs-inzeraty.git
+
+Projekt by mel byt umisten zde http://localhost:8887/fjfi-pvs-inzeraty/www/ . 8887 je port ktery si nastavujete pro webserver.
