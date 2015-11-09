@@ -18,6 +18,7 @@ class SecondpagePresenter extends BasePresenter
 		// vytvorim objekt, pomoci me modelove tridy v app/model
 		$komentareVsechny = new Model\TestModelClass;
 		// do promenne pro template nactu pole zvirat
-		$this->template->komentare = $komentareVsechny->vratPole(); 
+		$this->template->komentare = $komentareVsechny->vratKomentare(); 
+		$this->template->datakomentaru = $komentareVsechny->vratDataKomentaru();
 	}
 }

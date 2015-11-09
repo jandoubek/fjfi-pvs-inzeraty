@@ -1,4 +1,7 @@
 {* Vytvořil Tomas Hubinek na motivy Romana:) *}
+<html>
+<body>
+
 
 {block content}
 <div id="banner">
@@ -9,16 +12,24 @@
 </div>
 
 <div id="content">
-	<h2>Diskuse daného uživatele:</h2>
+	<h2>Diskuse k výrobku:</h2>
+	<img src="../images/lednicka.jpg">
 	<ul>
-		{foreach $komentare as $komentar}
-			<li>{$komentar}</li>
-		{/foreach}
+		<?php 
+	    	for ($x = 0; $x < count($komentare); $x++) {
+    	    	echo "<li> <b>Komentar cislo $x : </b> $komentare[$x] <br>
+    	       		 <b> Ze dne: </b> $datakomentaru[$x] <br> </li>";
+   			} 
+		?>
 	</ul>
-soubory k příkladu zvířátek:	
+
+   	<h2>Přidání zprávy</h2>
+	<form action="" method="post">
+	Zpráva: <input type="text" name="zprava"> <input type="submit" value="odeslat">
+	</form>
+
 </div>
 {/block}
-
 
 {block head}
 <style>
@@ -45,3 +56,5 @@ soubory k příkladu zvířátek:
 
 </style>
 {/block}
+</body>
+</html>
