@@ -14,7 +14,7 @@ class TestModelClass extends Nette\Object {
 
 	// konstruktor
 	public function __construct() {
-		$this->moje_pole = array('Ryba', 'Papouch', 'Lev', 'Tygr', 'Toník');
+		$this->moje_pole = array('Ryba', 'Papouch', 'Lev', 'Tygr', 'Žirafa', 'Toník');
 	}
 
 	// vraci array
