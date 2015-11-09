@@ -23,4 +23,5 @@ Projekt by mel byt umisten zde http://localhost:8887/fjfi-pvs-inzeraty/www/ . 88
 - Krok 1. Stáhnout GitHub Desktop z https://desktop.github.com/ a nainstalovat ho
 - Krok 2. Spustit GitHub Desktop a vyplnit uživatelské jméno a heslo
 - Krok 3. V GitHub Desktop najít adresář, který je na webu a dat klonovat
+
 Po úpravách souborů a commitu (nutno vyplnit Summary a Description) stačí kliknout na Sync
