@@ -10,7 +10,7 @@ use Nette;
 use App\Model;
 
 
-class SecondPagePresenter extends BasePresenter
+class SecondpagePresenter extends BasePresenter
 {
 
 	public function renderUkazkovaMetoda()
