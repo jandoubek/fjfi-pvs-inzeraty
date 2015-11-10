@@ -10,12 +10,10 @@ use Nette;
 use App\Model;
 
 
-class HomepagePresenter extends BasePresenter
-{
+class HomepagePresenter extends BasePresenter {
 
-	public function renderDefault()
-	{	
-		// vytvorim objekt, pomoci me modelove tridy v app/model
+	public function renderDefault() {	
+		// vytvorim objekt pomoci me modelove tridy v app/model
 		$mujZooObjekt = new Model\TestModelClass;
 		// do promenne pro template nactu pole zvirat
 		$this->template->zviratka = $mujZooObjekt->vratPole(); 
