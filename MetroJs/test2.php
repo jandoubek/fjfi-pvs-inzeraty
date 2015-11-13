@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+    <meta charset="Windows-1250">
     <title>All Modules</title>
     <link href="./MetroJs.css" rel="stylesheet" type="text/css" />
 </head>
