@@ -6,29 +6,122 @@
 
 {block content}
 <div id="banner">
-	<h1 class="header">
-		<img src="images/logo.png">
-		<span n:block=title>e-nástěnka..</span>
-	</h1>
+	<h1><i class="fa fa-calendar-plus-o"></i> eNástěnka</h1>
 </div>
-
 <div id="content">
-	<h1><i class="fa fa-calendar-plus-o"></i> Nadpis z Bootstrapu</h1>
-	<h2>Výpis zvířat v naší zoo:</h2>
-	<ul>
-		{foreach $zviratka as $zviratko}
-			<li>{$zviratko}</li>
-		{/foreach}
-	</ul>
-soubory k příkladu zvířátek:	
-<li>fjfi-pvs-inzeraty\app\model\TestModelClass.php - vytvoření pole zvířátek</li>
-<li>fjfi-pvs-inzeraty\app\presenters\HomepagePresenter.php - načtení pole zvířátek do proměnné $zviratka</li>
-<li>fjfi-pvs-inzeraty\app\presenters\templates\Homepage\default.latte - nastavení zobrazení stránky+výpis pole zvířátek</li>	
-<br>
-<br>
-Na následujícím odkazu je ukázka použití zdarma dostupné knihovny pro dlaždíce:
-<a href="../MetroJs/test2.php">fjfi-pvs-inzeraty/MetroJs/test2.php</a><br>
-Knihovnu jsem nalezl zde: <a href="http://www.drewgreenwell.com/projects/metrojs">http://www.drewgreenwell.com/projects/metrojs</a>. Dejte vědět svůj názor, popřípadě můžete zkusit najít jinou. pribyto4.
+	<section id="portfolio">
+    	<div class="container">
+        	<div class="row">
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/dum.png" class="img-responsive" alt="Dům">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/dort.png" class="img-responsive" alt="Dort">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/cirkus.png" class="img-responsive" alt="Cirkus">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/gamepad.png" class="img-responsive" alt="Gamepad">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/trezor.png" class="img-responsive" alt="Trezor">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/ponorka.png" class="img-responsive" alt="Ponorka">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/dum.png" class="img-responsive" alt="Dům">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/dort.png" class="img-responsive" alt="Dort">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/cirkus.png" class="img-responsive" alt="Cirkus">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/gamepad.png" class="img-responsive" alt="Gamepad">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/trezor.png" class="img-responsive" alt="Trezor">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/ponorka.png" class="img-responsive" alt="Ponorka">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/dum.png" class="img-responsive" alt="Dům">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/dort.png" class="img-responsive" alt="Dort">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/cirkus.png" class="img-responsive" alt="Cirkus">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/gamepad.png" class="img-responsive" alt="Gamepad">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/trezor.png" class="img-responsive" alt="Trezor">
+			    </div>
+			    <div class="col-lg-2 col-xs-4 portfolio-item">
+			        <img src="images/products/ponorka.png" class="img-responsive" alt="Ponorka">
+			    </div>
+			</div>
+    	</div>
+	</section>
+</div>
+<div id="middle">
+	<section id="help">
+	    <div class="container">
+	        <h1>VÝPIS ZVÍŘAT</h1>
+	        <div class="row">
+	            <div class="col-sm-2">
+					<ul>
+						{foreach $zviratka as $zviratko}
+							<li>{$zviratko}</li>
+						{/foreach}
+					</ul>
+	            </div>
+	            <div class="col-sm-10">
+	            	soubory k příkladu zvířátek:	
+					<li>fjfi-pvs-inzeraty\app\model\TestModelClass.php - vytvoření pole zvířátek</li>
+					<li>fjfi-pvs-inzeraty\app\presenters\HomepagePresenter.php - načtení pole zvířátek do proměnné $zviratka</li>
+					<li>fjfi-pvs-inzeraty\app\presenters\templates\Homepage\default.latte - nastavení zobrazení stránky+výpis pole zvířátek</li>   	        
+	            </div>
+	        </div>
+	        <div class="row">
+	            <div class="col-sm-12">
+	                	Na následujícím odkazu je ukázka použití zdarma dostupné knihovny pro dlaždíce:
+						<a href="../MetroJs/test2.php">fjfi-pvs-inzeraty/MetroJs/test2.php</a><br>
+						Knihovnu jsem nalezl zde: <a href="http://www.drewgreenwell.com/projects/metrojs">http://www.drewgreenwell.com/projects/metrojs</a>. Dejte vědět svůj názor, popřípadě můžete zkusit najít jinou. pribyto4.
+	            </div>
+	        </div>
+	    </div>
+	</section>
+</div>
+<div id="footer">
+	<section id="about">
+	    <div class="container">
+	        <h1>O NÁS</h1>
+	        <div class="row">
+	            <div class="col-sm-6">
+	                Internetová nástěnka je nástroj pro studenty, kteří mají potřebu inzerovat buď nějaký konkrétní produkt a nebo společenskou akci. Jedná se o skvělého pomocníka, který zjednodušuje studentský život. Máš zájem něco inzerovat? Hledáš něco do školy a nemůžeš to najít? V tom případě jsi tady správně!
+	            </div>
+	            <div class="col-sm-6">
+	                Projekt internetové nástěnky vznikl v rámci předmětu průmyslový vývoj softwaru (PVS) a na jeho vzniku se podílel tým složený ze studentů ČVUT v Praze. 
+	                <div class="btn-help">
+		            <a href="https://github.com/jandoubek/fjfi-pvs-inzeraty" title="GitHub" class="btn btn-success btn-lg">
+			            <i class="fa fa-github-alt"></i>
+			            GitHub
+		        	</a>
+		        	</div>
+	            </div>
+	        </div>
+	    </div>
+	</section>
+</div>
+<div id="last">
+	© <?php echo date("Y"); ?> PVS Team
 </div>
 {/block}
 
@@ -36,25 +129,38 @@ Knihovnu jsem nalezl zde: <a href="http://www.drewgreenwell.com/projects/metrojs
 {block head}
 <style>
 	html { overflow-y: scroll; }
-	body { font: 12px/1.45 Verdana, "Geneva CE", lucida, sans-serif; background: #3484d2; color: #555; margin: 38px auto; max-width: 940px; min-width: 420px; }
+	body { font: 15px Verdana, "Geneva CE", lucida, sans-serif; background: #3484d2; color: #555; }
 
-	h1.header, h2 { font: normal 150%/1.3 Georgia, "New York CE", utopia, serif; color: #1e5eb6; -webkit-text-stroke: 1px rgba(0,0,0,0); }
-	h1.header img { float: left; margin: -0.6em 1em 0 0; height: 46px;}
 	img { border: none; }
 
 	a { color: #006aeb; padding: 3px 1px; }
 
 	a:hover, a:active, a:focus { background-color: #006aeb; text-decoration: none; color: white; }
 	
-	#banner { background: yellow; color: darkblue; padding: 1em; border: 1px solid #eff4f7;
-    border-radius: 12px 12px 0 0;}
-
-	#content { background: white; border: 1px solid #eff4f7; border-radius: 0 0 12px 12px; padding: 10px 4%; overflow: hidden; }
+	#banner { background: #3484d2; color: yellow; padding: 1em 2em 1em 2em; border-bottom: 1px solid #1262B9;}
+	#content { background: white; border: 1px solid #eff4f7; padding: 10px 4% 4em 4%; overflow: hidden; }
 	#content > h2 { font-size: 130%; color: #666; clear: both; padding: 1.2em 0; margin: 0; }
+	#middle { background: #F0F8FF; border-top: 1px solid #eee; padding: 1em 2em 1em 2em;}
+	#footer { background: #3484d2; color: yellow; padding: 1em 2em 1em 2em; border-top: 1px solid #1262B9;}
+	#last { background: #1262B9; color: #ccc; padding: 1em 2em 1em 2em;}
+	
+	#about { padding: 1.5em 0; color: #eee;}
+	#help { padding: 1.5em 0;}
+	#about h1 { text-align: center; display: block; padding: 0 0 1em 0; color: yellow;}
+	#help h1 { text-align: center; display: block; padding: 0 0 1em 0; color: #3484d2;}
 
 	h2 span { color: #87A7D5; }
 	h2 a { text-decoration: none; background: transparent; }
 	ul { margin: 0 0 1em 0;}
-
+	.portfolio-item { padding-top: 30px;}
+	div.btn-help { display: block; padding: 1em; text-align: center;}
+	#about .btn-success{
+	    background: white;
+	    color: #3484d2;
+	    border-color: #DDD;
+	}
+	#about .btn-success:hover, #about .btn-success:focus, #about .btn-success:active{
+	    background: yellow;
+	}
 </style>
 {/block}
