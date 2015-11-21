@@ -38,5 +38,28 @@ class HomepagePresenter extends BasePresenter {
 
 		$this->template->inzeraty = $inzeraty;
 	}
+
+	public function renderProfile() {
+		// !! mepouzivat zavorky "" jsou pomalejsi nez ''
+		//defaultní hodnoty proměnných
+		$profile = array(
+			'nickname' => 'pribyto',
+			'password' => 'nevim',
+			'email' => 'tomas.pribyl.89@gmail.com',
+			'phonenumber' => '604555666',
+			'contacts' => array(
+				array(
+					'type' => 'Telefon',
+					'contact' => 604555666,
+					'info' => ''),
+				array(
+					'type' => 'Adresa',
+					'contact' => 'koleje Strahov, blok 3, pokoj 105',
+					'info' => 'jen behem tydne'),
+				),
+			);
+
+		$this->template->profile = $profile;
+	}
 }
 

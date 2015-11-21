@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="../assets/js/main_page/profile.js" type="text/javascript"></script>
+    <link href="../css/profile.css" rel="stylesheet">
+</head>
+
+<body>
+<form action="profil.php" method="post">
+
+	ikona: <img width="50" height="50" src="../images/profil.jpg"/>
+	<INPUT type="button" onClick="zmenitikonu()" value="změnit ikonu"><br>
+	přezdívka: {$profile['nickname']}<br>
+	<INPUT type="button" onClick="zmenitheslo()" value="změnit heslo"><br>
+	email: <input type="text" name="email" value="{$profile['email']}" readonly="readonly"><br><br>
+
+	Uložené volby pro kontaktování na vložené inzeráty (k inzerátu bude možné přiřadit libovolný kontakt nebo taky tam vytvořit nový kontakt):<br>
+
+	<br />
+
+	<table rules="all" cellpadding="5px">
+		<tr>
+			<td>typ kontaktu</td><td>kontakt</td><td>poznámka ke kontaktu</td>
+		</tr>
+		{foreach $profile['contacts'] as $contact}
+		<tr>
+			<td>{$contact['type']}</td><td><input type="text" name="contact" value="{$contact['contact']}"></td><td><input type="text" name="info" value="{$contact['info']}"></td>
+			<td><button>smazat kontakt</button></td>
+		</tr>
+		{/foreach}
+	</table>
+
+	<INPUT type="button" onClick="pridatkontakt()" value="přidat kontakt">(přidá řádek do tabulky, ve kterém bude jako typ kontaktu tento listbox:
+	<select name="typkontaktu" size="1">
+		<option value="telefon">Telefon
+		<option value="email">Email
+		<option value="adresa">Adresa
+		<option value="icq">Icq
+		<option value="skype">Skype
+	</select>)
+	<br><br>
+	<input type="hidden" name="editace" value="vypnuta">
+	<input type="submit" value="uložit změny">
+</form>
+
+</body>
+</html>
