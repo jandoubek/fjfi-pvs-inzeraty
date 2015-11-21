@@ -1,14 +1,10 @@
-$(document).ready(function() {
+	$(document).ready(function() {
 	$(".fancybox").fancybox({
-		maxWidth	: 800,
-		maxHeight	: 600,
 		fitToView	: false,
-		width		: '70%',
-		height		: '70%',
+		width		: '82%',
+		height	: '90%',
 		autoSize	: false,
 		closeClick	: false,
-		openEffect	: 'none',
-		closeEffect	: 'none',
 	});
 
 });
