@@ -40,14 +40,17 @@ class HomepagePresenter extends BasePresenter {
 	}
 
 	public function renderProfile() {
-		// !! mepouzivat zavorky "" jsou pomalejsi nez ''
+		// !! nepouzivat uvozovky "", jsou pomalejsi nez ''
 		//defaultní hodnoty proměnných
 		$profile = array(
 			'nickname' => 'pribyto',
 			'password' => 'nevim',
 			'email' => 'tomas.pribyl.89@gmail.com',
-			'phonenumber' => '604555666',
 			'contacts' => array(
+				array(
+					'type' => 'Email',
+					'contact' => 'tomas.pribyl.89@gmail.com',
+					'info' => ''),			
 				array(
 					'type' => 'Telefon',
 					'contact' => 604555666,

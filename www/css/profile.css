@@ -1,3 +1,6 @@
 input[readonly="readonly"] {
 	border: none;
 }
+
+table {border-collapse: collapse;}
+td    {padding: 5px;}
