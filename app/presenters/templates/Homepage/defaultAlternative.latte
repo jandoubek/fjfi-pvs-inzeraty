@@ -1,14 +1,13 @@
 {*
-    autor: Tomas Hubinek
+    autor: 
     vytvoreno: 18.11.2015
-    4 sloupcove formatovani bez popisku
+    4 sloupcove formatovani s kratkym popiskem
 *}
 
 <!DOCTYPE html>
 <html lang="cz">
 
 <head>
-
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -45,25 +44,42 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
                 <a class="navbar-brand" href="#"> eNástěnka</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Elektronika</a>
+                        <a href="#" style="color:red">Elektronika</a>
                     </li>
                     <li>
-                        <a href="#">Společenské akce</a>
+                        <a href="#" style="color:blue">Společenské akce</a>
                     </li>
                     <li>
-                        <a href="#">Jídlo</a>
+                        <a href="#" style="color:yellow">Jídlo</a>
                     </li>
                     <li>
-                        <a href="#">Jiné</a>
+                        <a href="#" style="color:green">Jiné</a>
+                    </li>
+                 </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <form class="navbar-form navbar-left" role="search">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Search">
+                            </div>
+                            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+                        </form>
                     </li>
                     <li>
+                    <?php if ($prihlasen): ?>
                         <a class="fancybox.ajax fancybox" href="../homepage/profile">Můj profil</a>
+                    <?php else: ?>
+                        <a  href="javascript:alert('PRIHLASEN!');">Přihlásit se</a>
+                        
+                    <?php endif ?>
                     </li>
                 </ul>
             </div>
@@ -287,6 +303,13 @@
     #help { padding: 1.5em 0;}
     #about h1 { text-align: center; display: block; padding: 0 0 1em 0; color:  #9d9d9d;}
     #help h1 { text-align: center; display: block; padding: 0 0 1em 0; color: #3484d2;}
+
+    div.picture {
+       width:100px; /*width of your image*/
+       height:100px; /*height of your image*/
+       margin:0; /* If you want no margin */
+       padding:0; /*if your want to padding */
+    }
 
     h4 { color: #222; }
     h2 span { color: #87A7D5; }

@@ -35,8 +35,12 @@ class HomepagePresenter extends BasePresenter {
 				'pictures' => array(), // nekde obrazky nebudou vubec => zobrazit cast body
 				),
 			);
+		//Zda je uzivatel prihlasen ci ne
+		$prihlasen = true;
 
 		$this->template->inzeraty = $inzeraty;
+
+		$this->template->prihlasen = $prihlasen;
 	}
 
 	public function renderProfile() {
