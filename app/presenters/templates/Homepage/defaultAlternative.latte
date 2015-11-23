@@ -1,5 +1,5 @@
 {*
-    autor: 
+    autor:
     vytvoreno: 18.11.2015
     4 sloupcove formatovani s kratkym popiskem
 *}
@@ -44,7 +44,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
                 <a class="navbar-brand" href="#"> eNástěnka</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -75,10 +75,10 @@
                     </li>
                     <li>
                     <?php if ($prihlasen): ?>
-                        <a class="fancybox.ajax fancybox" href="../homepage/profile">Můj profil</a>
+                        <a data-toggle="modal" href="../homepage/profile" data-target="#profile_modal">Můj profil</a>
                     <?php else: ?>
                         <a  href="javascript:alert('PRIHLASEN!');">Přihlásit se</a>
-                        
+
                     <?php endif ?>
                     </li>
                 </ul>
@@ -274,6 +274,14 @@
 
     </div>
     <!-- /.container -->
+
+<div id="profile_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
     <!-- jQuery -->
