@@ -1,19 +1,22 @@
+//základy o JQuery třeba zde: http://citron.blueboard.cz/clanek/jquery-pro-zacatecniky-zaklady
+//dokumentace zde: http://api.jquery.com/
+//výběr prvků: http://api.jquery.com/category/selectors/
 
+//-----defaultní nastavení
 var jednou=1;
-document.getElementById("smazatEmail").style.display="none"; //block none	
-var row = document.getElementById("kontaktyEmail");
-row.deleteCell(3);
-document.getElementById("smazatTelefon").style.display="none"; //block none	
-var row = document.getElementById("kontaktyTelefon");
-row.deleteCell(3);
-document.getElementById("smazatAdresa").style.display="none"; //block none	
-var row = document.getElementById("kontaktyAdresa");
-row.deleteCell(3);
-document.getElementById("zmenitikonu").style.display="none"; //block none
-document.getElementById("zmenitheslo").style.display="none"; //block none
+
+//odebrání buňek s tlačítky včetně tlačítek z tabulky
+$("#kontaktyEmail td:eq(3)").remove(); 
+$("#kontaktyTelefon td:eq(3)").remove(); 
+$("#kontaktyAdresa td:eq(3)").remove(); 
+
+//defaultně bez tlačítek
+$("#zmenitikonu").hide(0);
+$("#zmenitheslo").hide(0);
+//-----
 
 $(document).on('click', '#editovat_profil', function(event) {
-	// vsem inputum co maji tridu profile_input oebereme readonly => editace
+	// vsem inputum co maji tridu profile_input odebereme readonly => editace
 	$('.profile_input').each(function(index, el) {
 		$(el).removeAttr('readonly');
 	});
@@ -21,20 +24,14 @@ $(document).on('click', '#editovat_profil', function(event) {
 if (jednou==1)
 {
 jednou=0;
-var row = document.getElementById("kontaktyEmail");
-var cel = row.insertCell(3);
-cel.innerHTML = "<input type='button' id='smazatEmail' value='smazat kontakt'>";
+//zobrazení tlačítek v tabulce pro smazání určitého kontaktu
+$("#kontaktyEmail td:eq(2)").after("<td><input type='button' id='smazatEmail' value='smazat kontakt'></td>");
+$("#kontaktyTelefon td:eq(2)").after("<td><input type='button' id='smazatTelefon' value='smazat kontakt'></td>");
+$("#kontaktyAdresa td:eq(2)").after("<td><input type='button' id='smazatAdresa' value='smazat kontakt'></td>");
 
-var row = document.getElementById("kontaktyTelefon");
-var cel = row.insertCell(3);
-cel.innerHTML = "<input type='button'' id='smazatTelefon' value='smazat kontakt'>";
-
-var row = document.getElementById("kontaktyAdresa");
-var cel = row.insertCell(3);
-cel.innerHTML = "<input type='button' id='smazatAdresa' value='smazat kontakt'>";
-
-document.getElementById("zmenitikonu").style.display="block"; //block none
-document.getElementById("zmenitheslo").style.display="block"; //block none
+//zobrazení ostatních tlačítek
+$("#zmenitikonu").show(0);
+$("#zmenitheslo").show(0);
 }
 });
 
@@ -44,17 +41,15 @@ $(document).on('click', '#ulozit_profil', function(event) {
 		$(el).attr('readonly', 'readonly');
 	});
 jednou=1;
-document.getElementById("smazatEmail").style.display="none"; //block none	
-var row = document.getElementById("kontaktyEmail");
-row.deleteCell(3);
-document.getElementById("smazatTelefon").style.display="none"; //block none	 
-var row = document.getElementById("kontaktyTelefon");
-row.deleteCell(3);
-document.getElementById("smazatAdresa").style.display="none"; //block none	
-var row = document.getElementById("kontaktyAdresa");
-row.deleteCell(3);
-document.getElementById("zmenitikonu").style.display="none"; //block none
-document.getElementById("zmenitheslo").style.display="none"; //block none
+
+//odebrání buňek s tlačítky včetně tlačítek z tabulky
+$("#kontaktyEmail td:eq(3)").remove();
+$("#kontaktyTelefon td:eq(3)").remove();
+$("#kontaktyAdresa td:eq(3)").remove();
+
+//schování ostatních tlačítek
+$("#zmenitikonu").hide(0);
+$("#zmenitheslo").hide(0);
 });
 
 $(document).on('click', '#zmenitikonu', function(event) {
