@@ -20,114 +20,116 @@
 
     <script src="../assets/js/bootstrap.min.js"></script>
 
+    <script src="../js/inzerat.js"></script>
+    <link href="../css/inzerat.css" rel="stylesheet">
 </head>
 
-<style>
-      ul {
-          padding:0 0 0 0;
-          margin:0 0 40px 0;
-      }
-      ul li {
-          list-style:none;
-          margin-bottom:10px;
-      }
-
-  </style>
-
 <body>
-	<h1> Lednička Whirlpool BLF 8121 W </h1>
-	<br>
+<!--- modal-header, modal-body a modal-footer tvori strukturu PopUpu pomoci bootstrap -->
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-<form>
-  <div class="container">
-    <ul class="row">
-	    <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-    	    <img  src="../images/lednicka1.jpg" width = "70%" height = "70%">
-        	<div class="text">Lednička - 1. obrázek</div>
-    	</li>
-    	<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-     	    <img  src="../images/lednicka2.jpg" width = "30%" height = "30%">
-     	    <div class="text">Lednička - 2. obrázek</div>
-    	</li>
-    	<li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-       		<img  src="../images/lednicka3.jpg" width = "70%" height = "70%">
-       		<div class="text">Lednička - 3. obrázek</div>
-  	 	</li>
-	</ul>
-
-   </div> <!-- /container -->
-
-  <div class="form-group">
-    <label for="vlozObr">Vložit obrázek do galerie</label>
-    <input type="file" id="vlozObr">
-  </div>
-  <button type="submit" class="btn btn-default">Vložit</button>
-
-<br>
-<br>
-
-  <div class="form-group">    
-<!--    <div class="col-lg-7"> -->
-    	<label for="popis">Popis</label>
-   		 <textarea class="form-control" rows="5">
-Prodám ledničku značky Whirlpool BLF 8121 W. Je téměř nová, asi rok používaná, ale do strahovského pokoje moc velká. Má i velký mrazák.
-    </textarea>
-<!--	</div>  -->
   </div>
 
+  <div class="modal-body">
+      <h1> Lednička Whirlpool BLF 8121 W </h1>
+      <br>
+
+    <form>
+      <div class="container">
+        <ul class="row">
+          <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+              <img  src="../images/lednicka1.jpg" width = "70%" height = "70%">
+              <div class="text">Lednička - 1. obrázek</div>
+          </li>
+          <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+              <img  src="../images/lednicka2.jpg" width = "30%" height = "30%">
+              <div class="text">Lednička - 2. obrázek</div>
+          </li>
+          <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+              <img  src="../images/lednicka3.jpg" width = "70%" height = "70%">
+              <div class="text">Lednička - 3. obrázek</div>
+          </li>
+      </ul>
+
+       </div> <!-- /container -->
+
+      <div class="form-group">
+        <label for="vlozObr">Vložit obrázek do galerie</label>
+        <input type="file" id="vlozObr">
+      </div>
+      <button type="submit" class="btn btn-default">Vložit</button>
+
+    <br>
+    <br>
+
+      <div class="form-group">
+    <!--    <div class="col-lg-7"> -->
+          <label for="popis">Popis</label>
+           <textarea class="form-control" rows="5">
+    Prodám ledničku značky Whirlpool BLF 8121 W. Je téměř nová, asi rok používaná, ale do strahovského pokoje moc velká. Má i velký mrazák.
+        </textarea>
+    <!--  </div>  -->
+      </div>
 
 
-<br>
 
-Cena: 5000 Kč
+    <br>
+
+    Cena: 5000 Kč
 
 
-<!--
-  <div class="form-group">
-    <label for="cena" class="col-xs-2 control-label">Cena</label>
-    <div class="col-sm-2">
-      <input type="email" class="form-control" id="cena" placeholder="5000">
-    </div>
+    <!--
+      <div class="form-group">
+        <label for="cena" class="col-xs-2 control-label">Cena</label>
+        <div class="col-sm-2">
+          <input type="email" class="form-control" id="cena" placeholder="5000">
+        </div>
+      </div>
+    -->
+
+
+    </form>
+
+    <br>
+    <p>
+      <button class="btn btn-default" type="submit">Editovat</button>
+      <button class="btn btn-default" type="submit">Ulož změny</button>
+    </p>
+
+    <br><br>
+
+    <h4> Diskuze </h4>
+
+    <form>
+      <div class="form-group">
+        <label for="prispevek">Honza, 23. 11. 2015, 12:45</label>
+        <textarea class="form-control" rows="2">
+    Ta lednička se mi líbí.
+        </textarea>
+      </div>
+
+        <div class="form-group">
+        <label for="prispevek">Vašek, 23. 11. 2015, 12:48</label>
+        <textarea class="form-control" rows="2">
+    Mně teda vůbec.
+        </textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="prispevek">Honza, 23. 11. 2015, 12:50</label>
+        <textarea class="form-control" rows="2">
+    Tak si ji nekupuj.
+        </textarea>
+      </div>
+
+    </form>
   </div>
--->
 
-
-</form>
-
-<br>
-<p>
-	<button class="btn btn-default" type="submit">Editovat</button>
-	<button class="btn btn-default" type="submit">Ulož změny</button>
-</p>
-
-<br><br>
-
-<h4> Diskuze </h4>
-
-<form>
-  <div class="form-group">
-    <label for="prispevek">Honza, 23. 11. 2015, 12:45</label>
-    <textarea class="form-control" rows="2">
-Ta lednička se mi líbí.
-    </textarea>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="inzerat_save_and_close">Uložit a zavřít</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">Zavřít</button>
   </div>
-
-    <div class="form-group">
-    <label for="prispevek">Vašek, 23. 11. 2015, 12:48</label>
-    <textarea class="form-control" rows="2">
-Mně teda vůbec.
-    </textarea>
-  </div>
-
-  <div class="form-group">
-    <label for="prispevek">Honza, 23. 11. 2015, 12:50</label>
-    <textarea class="form-control" rows="2">
-Tak si ji nekupuj.
-    </textarea>
-  </div>
-
-</form>
-
 
 </body>
 
