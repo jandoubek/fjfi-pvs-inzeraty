@@ -75,6 +75,7 @@
                     </li>
                     <li>
                     <?php if ($prihlasen): ?>
+                        <!-- PopUp pomoci bootstrap -->
                         <a data-toggle="modal" href="../homepage/profile" data-target="#profile_modal">Můj profil</a>
                     <?php else: ?>
                         <a  href="javascript:alert('PRIHLASEN!');">Přihlásit se</a>
@@ -275,6 +276,7 @@
     </div>
     <!-- /.container -->
 
+<!-- PopUp pomoci bootstrap, naplni se to profile.latte -->
 <div id="profile_modal" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
