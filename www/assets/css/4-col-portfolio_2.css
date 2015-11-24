@@ -34,6 +34,10 @@ body {
     padding: 0;
 }
 
+.thumbnail_inner {
+    border-radius: 90px;
+}
+
 .elektronika {
     background-color: red;
 }
