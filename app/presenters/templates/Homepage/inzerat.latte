@@ -35,7 +35,7 @@
   </style>
 
 <body>
-	<h1> Lednička Whirlpool BLF 8121 W </h1>
+	<h1> <?php echo $nazev; ?> </h1>
 	<br>
 
 <form>
@@ -67,13 +67,13 @@
 <br>
 
   <div class="form-group">    
-<!--    <div class="col-lg-7"> -->
+<!--   <div class="col-lg-7">  -->
     	<label for="popis">Popis</label>
    		 <textarea class="form-control" rows="5">
 Prodám ledničku značky Whirlpool BLF 8121 W. Je téměř nová, asi rok používaná, ale do strahovského pokoje moc velká. Má i velký mrazák.
     </textarea>
 <!--	</div>  -->
-  </div>
+ </div>
 
 
 
@@ -123,6 +123,16 @@ Mně teda vůbec.
     <label for="prispevek">Honza, 23. 11. 2015, 12:50</label>
     <textarea class="form-control" rows="2">
 Tak si ji nekupuj.
+    </textarea>
+  </div>
+
+</form>
+
+<form>
+  <h5>Přidat příspěvek</h5>
+    <div class="form-group">
+    <input type="text" class="form-control" id="pridat_prispevek" placeholder="">
+    <textarea class="form-control" rows="2">
     </textarea>
   </div>
 

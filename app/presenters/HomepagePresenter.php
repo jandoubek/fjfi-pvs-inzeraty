@@ -95,7 +95,9 @@ class HomepagePresenter extends BasePresenter {
 
 
 	public function renderInzerat() {
-		
+		$nazev = "Lednička Whirlpool BLF 8121 W";
+
+		$this->template->nazev = $nazev;
 	}
 }
 
