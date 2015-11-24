@@ -68,5 +68,10 @@ class HomepagePresenter extends BasePresenter {
 
 		$this->template->profile = $profile;
 	}
+
+
+	public function renderInzerat() {
+		
+	}
 }
 
