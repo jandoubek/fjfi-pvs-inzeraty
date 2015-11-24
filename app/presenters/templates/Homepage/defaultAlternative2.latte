@@ -1,5 +1,5 @@
 {*
-    autor: 
+    autor:
     vytvoreno: 18.11.2015
     4 sloupcove formatovani s kratkym popiskem
 *}
@@ -27,7 +27,7 @@
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Formátování stránky -->
-    
+
     <link href="../assets/css/4-col-portfolio_2.css" rel="stylesheet">
 
     <script type="text/javascript" src="../assets/js/main_page/main_page.js"></script>
@@ -45,7 +45,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
                 <a class="navbar-brand" href="#"> eNástěnka</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
@@ -76,10 +76,10 @@
                     </li>
                     <li>
                     <?php if ($prihlasen): ?>
-                        <a class="fancybox.ajax fancybox" href="../homepage/profile">pribyto</a>
+                        <a data-toggle="modal" href="../homepage/profile" data-target="#profile_modal">Můj profil</a>
                     <?php else: ?>
                         <a  href="javascript:alert('PRIHLASEN!');">Přihlásit se</a>
-                        
+
                     <?php endif ?>
                     </li>
                 </ul>
@@ -141,7 +141,7 @@
                             </div>
                         </div>
             </div>
-            
+
 
                <div class="col-md-3">
                  <div class="thumbnail jidlo">
@@ -198,7 +198,7 @@
                             </div>
                         </div>
             </div>
-            
+
 
                <div class="col-md-3">
                  <div class="thumbnail jidlo">
@@ -267,7 +267,7 @@
                             </div>
                         </div>
             </div>
-            
+
         </div>
         <!-- /.row -->
 
@@ -334,6 +334,15 @@
 
     </div>
     <!-- /.container -->
+
+<!-- PopUp pomoci bootstrap, naplni se to profile.latte -->
+<div id="profile_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
 </body>
 </html>
     <!-- jQuery -->
