@@ -12,7 +12,19 @@ use App\Model;
 
 class HomepagePresenter extends BasePresenter {
 
+		/** @var Model\Database */
+		private $database;
+
+
+	/* --- --- KONSTRUKTOR PRESENTERU --- --- */
+	public function __construct(Model\Database $database) {
+		$this->database = $database;
+	}
+
+
+	/* --- --- RENDER METODY PRESENTERU --- --- */
 	public function renderDefault() {
+		$this->template->dbUser = $this->database->findById('user', 1);
 		// vytvorim objekt pomoci me modelove tridy v app/model
 		$mujZooObjekt = new Model\TestModelClass;
 		// do promenne pro template nactu pole zvirat
