@@ -1,0 +1,1 @@
+Dumpy databáze jsou v souboru pvs_inzeraty_v(cislo). Číslo za "v" je číslo verze, čím větší číslo, tím aktuálnější dump db. 
