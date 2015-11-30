@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+
+   <!--- <script src="../assets/js/main_page/profile.js" type="text/javascript"></script>-->
+    <link href="../css/register.css" rel="stylesheet">
+</head>
+
+<body>
+  <!--- modal-header, modal-body a modal-footer tvori strukturu PopUpu pomoci bootstrap -->
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title"><b style="font-size:2em">registrace</b></h4>
+	</div>
+
+	<div class="modal-body">
+		<br />
+		<div class="input-group col-xs-9">
+		  <span class="input-group-addon" id="register_nickname" style="width: 7em">přezdívka</span>
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="register_nickname" id="register_nickname_input">
+		</div><br />
+		<div class="input-group col-xs-9">
+		  <span class="input-group-addon" id="register_password" style="width: 7em">heslo</span>
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="register_password" id="register_password_input">
+		</div><br />
+		<div class="input-group col-xs-9">
+		  <span class="input-group-addon" id="register_password2" style="width: 7em">heslo znovu</span>
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="register_password2" id="register_password2_input">
+		</div><br />		
+		<div class="input-group col-xs-9">
+		  <span class="input-group-addon" id="register_email" style="width: 7em">email</span>
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="register_email" id="register_email_input">
+		</div><br /><br />		
+	</div>
+
+	<div class="modal-footer">
+		<button type="button" class="btn btn-default" data-dismiss="modal" id="register_enter">Registrovat</button>
+	</div>
+
+</body>
+</html>

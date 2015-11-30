@@ -72,7 +72,7 @@ class HomepagePresenter extends BasePresenter {
 				),
 			);
 		//Zda je uzivatel prihlasen ci ne
-		$prihlasen = true;
+		$prihlasen = false;
 
 		$this->template->inzeraty = $inzeraty;
 

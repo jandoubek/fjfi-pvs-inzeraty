@@ -64,8 +64,8 @@
                         <a href="#" style="color:green">Jiné</a>
                     </li>
                     <li>
-                        <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">Inzerat zatim nechat tady</a>
-                    </li
+                        <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">inzerát zatim tady</a>
+                    </li>
                  </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -77,15 +77,22 @@
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         </form>
                     </li>
+               {if ($prihlasen)}
                     <li>
-                    <?php if ($prihlasen): ?>
-                        <a data-toggle="modal" href="../homepage/profile" data-target="#profile_modal">Můj profil</a>
-                    <?php else: ?>
-                        <a  href="javascript:alert('PRIHLASEN!');">Přihlásit se</a>
-
-                    <?php endif ?>
+                    <!-- <a  href="javascript:alert('PRIHLASEN!');">Přihlásit se</a>-->    
+                    <a data-toggle="modal" href="../homepage/profile" data-target="#profile_modal">Můj profil</a>
                     </li>
+                {else}
+                    <li>
+                    <a data-toggle="modal" href="../homepage/login" data-target="#login_modal">přihlásit</a>
+                    </li>
+                    <li>
+                    <a data-toggle="modal" href="../homepage/register" data-target="#register_modal">registrovat</a>
+                    </li>                
+
+                {/if}                    
                 </ul>
+
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -346,6 +353,23 @@
     </div>
   </div>
 </div>
+
+<!-- PopUp pomoci bootstrap, naplni se to login.latte -->
+<div id="login_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
+<!-- PopUp pomoci bootstrap, naplni se to register.latte -->
+<div id="register_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
+
 
 <!-- PopUp pomoci bootstrap, naplni se to inzerat.latte -->
 <div id="inzerat_modal" class="modal fade" role="dialog">
