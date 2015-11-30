@@ -19,15 +19,15 @@
 		<br />
 		<div class="input-group col-xs-9">
 		  <span class="input-group-addon" id="profile_email" style="width: 7em">Email</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_email" id="profile_email_input">
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_email" id="profile_email_input" value="{$profile['contacts'][0]['contact']}">
 		</div><br />
 		<div class="input-group col-xs-9">
 		  <span class="input-group-addon" id="profile_telefon" style="width: 7em">Telefon</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_telefon" id="profile_telephone_input">
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_telefon" id="profile_telephone_input" value="{$profile['contacts'][1]['contact']}">
 		</div><br />
 		<div class="input-group col-xs-9">
 		  <span class="input-group-addon" id="profile_adress" style="width: 7em">Adresa</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_adress" id="profile_adress_input">
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_adress" id="profile_adress_input" value="{$profile['contacts'][2]['contact']}">
 		</div><br /><br />
 		<div class="form-group">
 		  <label for="profile_info">Komentář ke kontaktům a profilu:</label>

@@ -79,9 +79,11 @@
                     </li>
                {if ($prihlasen)}
                     <li>
-                    <!-- <a  href="javascript:alert('PRIHLASEN!');">Přihlásit se</a>-->    
                     <a data-toggle="modal" href="../homepage/profile" data-target="#profile_modal">Můj profil</a>
                     </li>
+                    <li>
+                    <a href="./defaultalternative2" data-target="#logout_modal">odhlásit</a>
+                    </li>                    
                 {else}
                     <li>
                     <a data-toggle="modal" href="../homepage/login" data-target="#login_modal">přihlásit</a>
