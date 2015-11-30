@@ -106,6 +106,7 @@ class HomepagePresenter extends BasePresenter {
 					'contact' => 'koleje Strahov, blok 3, pokoj 105',
 					'info' => 'jen behem tydne'),
 				),
+			'comment' => 'Telefonní číslo je smyšlené a na uvedené adrese mě nikdy nenajdete, takže zkuste radši email.',
 			);
 
 		$this->template->profile = $profile;
