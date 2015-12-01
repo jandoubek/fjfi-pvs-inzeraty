@@ -79,10 +79,14 @@ class HomepagePresenter extends BasePresenter {
 		{
 		$prihlasen = true;	
 		}
+		$profile = array(
+			'nickname' => 'pribyto');
 
 		$this->template->inzeraty = $inzeraty;
 
 		$this->template->prihlasen = $prihlasen;
+
+		$this->template->profile = $profile;
 	}
 
 	public function renderProfile() {
