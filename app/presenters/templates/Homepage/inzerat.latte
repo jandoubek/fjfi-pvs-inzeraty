@@ -22,6 +22,11 @@
 
     <script src="../js/inzerat.js"></script>
     <link href="../css/inzerat.css" rel="stylesheet">
+
+    <script src="../assets/js/jquery.blueimp-gallery.min.js"></script>
+    <script src="../assets/js/bootstrap-image-gallery.js"></script>
+    <link rel="stylesheet" href="../assets/css/blueimp-gallery.min.css">
+    <link rel="stylesheet" href="../assets/css/bootstrap-image-gallery.css">   
 </head>
 
 <body>
@@ -37,36 +42,57 @@
       <h1> <?php echo $nazev; ?> </h1>
       <br>
 
-      <div class="row carousel-holder">
+<h4> <b>Galerie</b> </h4>
+    <!-- The container for the list of example images -->
+    <div id="links">
+        <a href="../images/lednicka1.jpg" title="1. obrázek" data-gallery>
+          <img src="../images/thumbnails/lednicka1.jpg" alt="1. obrázek">
+        </a>        
 
-                    <div class="col-md-12">
-                        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                            </ol>
-                            <div class="carousel-inner">
-                                <div class="item active">
-                                    <img class="slide-image" src="../images/lednicka1.jpg" width = "30%" height = "30%">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="../images/lednicka2.jpg" width = "10%" height = "10%">
-                                </div>
-                                <div class="item">
-                                    <img class="slide-image" src="../images/lednicka3.jpg" width = "40%" height = "40%">
-                                </div>
-                            </div>
-                            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                                <span class="glyphicon glyphicon-chevron-left"></span>
-                            </a>
-                            <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                                <span class="glyphicon glyphicon-chevron-right"></span>
-                            </a>
-                        </div>
-                    </div>
+        <a href="../images/lednicka2.jpg" title="2. obrázek" data-gallery>
+          <img src="../images/thumbnails/lednicka2.jpg" alt="2. obrázek">
+        </a> 
 
-      </div>
+        <a href="../images/lednicka3.jpg" title="3. obrázek" data-gallery>
+          <img src="../images/thumbnails/lednicka3.jpg" alt="3. obrázek">
+        </a>         
+    </div>
+
+  <br>
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 
     <br>
@@ -77,9 +103,6 @@
      <textarea readonly class="form-control" rows="5" style="color: black; background-color: white">
 Prodám ledničku značky Whirlpool BLF 8121 W. Je téměř nová, asi rok používaná, ale do strahovského pokoje moc velká. Má i velký mrazák.
       </textarea>
-
-
-
 
     <br>
 
@@ -120,38 +143,69 @@ Tak si ji nekupuj.
    <br>   
        <label for="nazev_inzeratu">Název inzerátu</label>
            <input class="form-control input-lg" type="text" id="nazev_inzeratu" placeholder="<?php echo $nazev ?>">
-      <br>
+   <br>
+   <label>Vyberte kategorii:</label>
+   <select class="form-control">
+     <option>Elektronika</option>
+     <option>Společenské akce</option>
+     <option>Jídlo</option>
+     <option>Jiné</option>
+   </select>
 
-      <div class="row carousel-holder">
+   <br>
 
-        <div class="col-md-12">
-          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-            </ol>
-              <div class="carousel-inner">
-                  <div class="item active">
-                    <img class="slide-image" src="../images/lednicka1.jpg" width = "30%" height = "30%">
-                  </div>
-                  <div class="item">
-                    <img class="slide-image" src="../images/lednicka2.jpg" width = "10%" height = "10%">
-                  </div>
-                  <div class="item">
-                    <img class="slide-image" src="../images/lednicka3.jpg" width = "40%" height = "40%">
-                  </div>
-              </div>
-              <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-              </a>
-              <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
-                <span class="glyphicon glyphicon-chevron-right"></span>
-              </a>
-          </div>
+<h4> <b>Galerie</b> </h4>
+
+    <!-- The container for the list of example images -->
+    <div id="links">
+        <a href="../images/lednicka1.jpg" title="1. obrázek" data-gallery>
+          <img src="../images/thumbnails/lednicka1.jpg" alt="1. obrázek">
+        </a>        
+
+        <a href="../images/lednicka2.jpg" title="2. obrázek" data-gallery>
+          <img src="../images/thumbnails/lednicka2.jpg" alt="2. obrázek">
+        </a> 
+
+        <a href="../images/lednicka3.jpg" title="3. obrázek" data-gallery>
+          <img src="../images/thumbnails/lednicka3.jpg" alt="3. obrázek">
+        </a>         
+    </div>
+
+  <br>
+<!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
+<div id="blueimp-gallery" class="blueimp-gallery">
+    <!-- The container for the modal slides -->
+    <div class="slides"></div>
+    <!-- Controls for the borderless lightbox -->
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <!-- The modal dialog, which will be used to wrap the lightbox content -->
+    <div class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
         </div>
-
-      </div>
+    </div>
+</div>
 
       <br>
 
