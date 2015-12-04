@@ -8,9 +8,13 @@ namespace App\Presenters;
 
 use Nette;
 use App\Model;
+use App\Forms\SignFormFactory;
 
 
 class HomepagePresenter extends BasePresenter {
+
+		/** @var SignFormFactory @inject */
+		public $factory;
 
 		/** @var Model\Database */
 		private $database;
@@ -89,7 +93,15 @@ class HomepagePresenter extends BasePresenter {
 		$this->template->profile = $profile;
 	}
 
-	public function renderProfile() {
+	public function renderProfile($id = null) {
+
+		$this->template->profile = $this->database->findById('user', $id);
+		if(!$this->template->profile) {
+			$this->flashMessage('Je nám líto, ale hledaný uživatel v naší databázi není.');
+			$this->redirect('Homepage:defaultalternative2');
+		}
+
+		/* zakomentovani, navazani na tomovu praci -> provazanim s DB
 		// !! nepouzivat uvozovky "", jsou pomalejsi nez ''
 		//defaultní hodnoty proměnných
 		$profile = array(
@@ -113,7 +125,7 @@ class HomepagePresenter extends BasePresenter {
 			'comment' => 'Telefonní číslo je smyšlené a na uvedené adrese mě nikdy nenajdete, takže zkuste radši email.',
 			);
 
-		$this->template->profile = $profile;
+		$this->template->profile = $profile;*/
 	}
 
 
@@ -122,5 +134,30 @@ class HomepagePresenter extends BasePresenter {
 
 		$this->template->nazev = $nazev;
 	}
+
+
+	/* --- --- ACTION METODY PRESENTERU --- --- */
+	public function actionLogout() {
+		$gender_id = $this->user->identity->id_gender;
+		$this->getUser()->logout();
+		$this->flashMessage('Odhlášení proběhlo bez problémů.');
+		$this->redirect('Homepage:defaultalternative2');
+	}
+
+
+	/* --- --- TOVARNICKY PRESENTERU --- --- */	
+	/**
+	 * Tovarnicka pro prihlasovaci formular.
+	 * @return Nette\Application\UI\Form
+	 */
+	protected function createComponentSignInForm() {		
+		$form = $this->factory->create();
+		$form->onSuccess[] = function ($form) {
+			$this->flashMessage('Přihlášení proběhlo bez problémů.');
+			$this->redirect('Homepage:defaultalternative2');
+		};
+		return $form;
+	}
+
 }
 

@@ -64,7 +64,7 @@
                         <a href="#" style="color:green">Jiné</a>
                     </li>
                     <li>
-                        <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">inzerát zatim tady</a>
+                        <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">inzerát zde</a>
                     </li>
                  </ul>
 
@@ -77,12 +77,12 @@
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         </form>
                     </li>
-               {if ($prihlasen)}
+               {if ($user->loggedIn)}
                     <li>
-                    <a data-toggle="modal" href="../homepage/profile" data-target="#profile_modal">{$profile['nickname']}</a>
+                    <a data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a>
                     </li>
                     <li>
-                    <a href="./defaultalternative2" data-target="#logout_modal">odhlásit</a>
+                    <a n:href="Homepage:logout" data-target="#logout_modal">odhlásit</a>
                     </li>                    
                 {else}
                     <li>

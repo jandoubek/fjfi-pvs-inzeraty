@@ -6,3 +6,35 @@ table {border-collapse: collapse;}
 td    {padding: 5px;}
 
 .input-group-addon{font-weight: bold;}
+
+div.mar-input {
+    margin-bottom: 1em;
+}
+
+label > input {
+    float: left;
+}
+
+label {
+    color: #555;
+    font-weight: normal;
+}
+
+.warn-msg {
+	font-size: 12px;
+	margin-bottom: 1em;
+	padding: 1em;
+    background: #eee;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+}
+
+.warn-msg > table {
+	margin: 0.5em 0 0 0;
+	padding: 0;
+}
+
+.warn-msg > table > td {
+	padding: 0 6px;
+}
