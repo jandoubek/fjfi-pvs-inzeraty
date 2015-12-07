@@ -46,23 +46,15 @@
                     <span class="icon-bar"></span>
                 </button>
 
-                <a class="navbar-brand" href="#"> eNástěnka</a>
+                <a class="navbar-brand" href="#" style="color: white"> eNástěnka</a>
+                <a class="navbar-brand" style="color: #C80815" href="#"> Elektronika </a>
+                <a class="navbar-brand" style="color: #85C1F5 " href="#"> Společenské akce </a>
+                <a class="navbar-brand" style="color: #F7D708" href="#"> Jídlo </a>
+                <a class="navbar-brand" style="color: #9CCF31" href="#"> Jiné </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#" style="color:red">Elektronika</a>
-                    </li>
-                    <li>
-                        <a href="#" style="color:blue">Společenské akce</a>
-                    </li>
-                    <li>
-                        <a href="#" style="color:yellow">Jídlo</a>
-                    </li>
-                    <li>
-                        <a href="#" style="color:green">Jiné</a>
-                    </li>
+                <ul class="nav navbar-nav nav-pills" role="tablist">
                     <li>
                         <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">inzerát zde</a>
                     </li>
@@ -83,16 +75,16 @@
                     </li>
                     <li>
                     <a n:href="Homepage:logout" data-target="#logout_modal">odhlásit</a>
-                    </li>                    
+                    </li>
                 {else}
                     <li>
                     <a data-toggle="modal" href="../homepage/login" data-target="#login_modal">přihlásit</a>
                     </li>
                     <li>
                     <a data-toggle="modal" href="../homepage/register" data-target="#register_modal">registrovat</a>
-                    </li>                
+                    </li>
 
-                {/if}                    
+                {/if}
                 </ul>
 
             </div>
@@ -115,171 +107,21 @@
 
         <!-- Projects Row -->
         <div class="row">
-                       <div class="col-md-3" >
 
-                 <div class="thumbnail elektronika">
-                            <a href="#">
-                            <img src="../images/products/pocitac.jpg" class="img-responsive img-rounded" alt="">
-                             </a>
-                            <div class="caption">
-                                <h4 class="pull-right">245 CZK</h4>
-                                <h4>Pocitac</h4>
-                                <p>Muj stary pocitac ke koupi</p>
-                            </div>
+        {foreach $inzeraty as $mini_inzerat}
+        <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">
+            <div class="thumbnail inzerat_miniatura {$mini_inzerat['class']}">
+                <img src="../images/products/{$mini_inzerat['pictures']}" class="img-responsive" alt="">
+                <div class="caption">
+                    <h4 class="pull-right">{$mini_inzerat['prize']}</h4>
+                    <h4>{$mini_inzerat['header']}</h4>
+                    <p>{$mini_inzerat[body]}</p>
                 </div>
             </div>
-
-  <div class="col-md-3">
-                 <div class="thumbnail jine">
-                 <a href="#">
-                            <img src="../images/products/divadlo.jpeg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">500 CZK</h4>
-                                <h4>Godot</h4>
-                                <p>SMam volny listek do divadlo,kdo se prida?</p>
-                            </div>
-                        </div>
-            </div>
-
-               <div class="col-md-3">
-                 <div class="thumbnail akce">
-                 <a href="#">
-                            <img src="../images/products/koncert.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">200 CZK</h4>
-                                <h4>Koncert</h4>
-                                <p>Konert...</p>
-                            </div>
-                        </div>
-            </div>
+        </a>
+        {/foreach}
 
 
-               <div class="col-md-3">
-                 <div class="thumbnail jidlo">
-                 <a href="#">
-                            <img src="../images/products/burger.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">0 CZK</h4>
-                                <h4>Burger night</h4>
-                                <p>Delam burgery pojdte se pridat</p>
-                            </div>
-                        </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-                        <div class="col-md-3">
-                 <div class="thumbnail elektronika">
-                 <a href="#">
-                            <img src="../images/products/pocitac.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">245 CZK</h4>
-                                <h4>Pocitac</h4>
-                                <p>Muj stary pocitac ke koupi</p>
-                            </div>
-                        </div>
-            </div>
-
-               <div class="col-md-3">
-                 <div class="thumbnail akce">
-                 <a href="#">
-                            <img src="../images/products/koncert.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">200 CZK</h4>
-                                <h4>Koncert</h4>
-                                <p>Konert...</p>
-                            </div>
-                        </div>
-            </div>
-
-  <div class="col-md-3">
-                 <div class="thumbnail jine">
-                 <a href="#">
-                            <img src="../images/products/divadlo.jpeg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">500 CZK</h4>
-                                <h4>Godot</h4>
-                                <p>SMam volny listek do divadlo,kdo se prida?</p>
-                            </div>
-                        </div>
-            </div>
-
-
-               <div class="col-md-3">
-                 <div class="thumbnail jidlo">
-                 <a href="#">
-                            <img src="../images/products/burger.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">0 CZK</h4>
-                                <h4>Burger night</h4>
-                                <p>Delam burgery pojdte se pridat</p>
-                            </div>
-                        </div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-                       <div class="col-md-3">
-                 <div class="thumbnail jidlo">
-                 <a href="#">
-                            <img src="../images/products/burger.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">0 CZK</h4>
-                                <h4>Burger night</h4>
-                                <p>Delam burgery pojdte se pridat</p>
-                            </div>
-                        </div>
-            </div>
-                       <div class="col-md-3">
-                 <div class="thumbnail elektronika">
-                 <a href="#">
-                            <img src="../images/products/pocitac.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">245 CZK</h4>
-                                <h4>Pocitac</h4>
-                                <p>Muj stary pocitac ke koupi</p>
-                            </div>
-                        </div>
-            </div>
-
-  <div class="col-md-3">
-                 <div class="thumbnail elektronika">
-                 <a href="#">
-                            <img src="../images/products/pocitac.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">500 CZK</h4>
-                                <h4>Pocitac</h4>
-                                <p>Super pocitac, budete spokojeni</p>
-                            </div>
-                        </div>
-            </div>
-
-               <div class="col-md-3">
-                 <div class="thumbnail akce">
-                 <a href="#">
-                            <img src="../images/products/koncert.jpg" class="img-responsive img-rounded" alt="">
-                </a>
-                            <div class="caption">
-                                <h4 class="pull-right">200 CZK</h4>
-                                <h4>Koncert</h4>
-                                <p>Konert...</p>
-                            </div>
-                        </div>
-            </div>
 
         </div>
         <!-- /.row -->

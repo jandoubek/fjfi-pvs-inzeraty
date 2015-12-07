@@ -25,6 +25,75 @@ class HomepagePresenter extends BasePresenter {
 		$this->database = $database;
 	}
 
+	public function renderDefaultAlternative2(){
+		/* staticka data z DB */
+		$this->template->inzeraty = array(
+			1 => array( // ID inzeratu
+				'class' => 'elektronika',
+				'header' => 'Pocitac',
+				'body' => 'Muj stary pocitac ke koupi',
+				'prize' => 250,
+				'pictures' => 'pocitac.jpg',
+				),
+			2 => array(
+				'class' =>'akce',
+				'header' => 'Godot',
+				'body' => 'Mam volny listek do divadla, kdo se prida? Ctvrtek 19:00.',
+				'prize' => 500,
+				'pictures' => '',
+				),
+			3 => array(
+				'class' =>'akce',
+				'header' => 'Koncert',
+				'body' => 'Koncert...',
+				'prize' => 250,
+				'pictures' => 'koncert.jpg',
+				),
+			4 => array(
+				'class' =>'jidlo',
+				'header' => 'Burger Night',
+				'body' => 'Delam burgery, pojdte se pridat.',
+				'prize' => 0,
+				'pictures' => 'burger.jpg',
+				),
+			5 => array(
+				'class' =>'elektronika',
+				'header' => 'Pocitac',
+				'body' => 'Muj stary pocitac ke koupi',
+				'prize' => 245,
+				'pictures' => 'pocitac.jpg',
+				),
+			6 => array(
+				'class' =>'jidlo',
+				'header' => 'Burger Night',
+				'body' => 'Delam burgery, pojdte se pridat.',
+				'prize' => 0,
+				'pictures' => 'burger.jpg',
+				),
+			7 => array(
+				'class' =>'jine',
+				'header' => 'Hledam douco',
+				'body' => 'Potrebuji se doucit matematiku, umi nekdo zlomky?',
+				'prize' => 200,
+				'pictures' => 'koncert.jpg',
+				),
+			8 => array(
+				'class' =>'jidlo',
+				'header' => 'Burger Night',
+				'body' => 'Delam burgery, pojdte se pridat.',
+				'prize' => 0,
+				'pictures' => 'burger.jpg',
+				),
+			9 => array(
+				'class' =>'jine',
+				'header' => 'Hledam douco',
+				'body' => 'Potrebuji se doucit matematiku, umi nekdo zlomky?',
+				'prize' => 200,
+				'pictures' => 'koncert.jpg',
+				),
+			);
+	}
+
 
 	/* --- --- RENDER METODY PRESENTERU --- --- */
 	public function renderDefault() {
@@ -34,33 +103,16 @@ class HomepagePresenter extends BasePresenter {
 		// do promenne pro template nactu pole zvirat
 		$this->template->zviratka = $mujZooObjekt->vratPole();
 
-				/* staticka data z DB */
-		$inzeraty = array(
-			12 => array( // ID inzeratu
-				'header' => 'Prodam ledničku s mrazákem',
-				'body' => 'Lednicka koupena roku 2004. Narocne pouzivana. Fungujici',
-				'prize' => 1800,
-				'pictures' => array('111.png', '123.jpg', '124.png'), // seznam obrazku, ktery jsou ulozeny na serveru.. obrazky budou na serveru ulozeny pod ID, nikoliv pod svym jmenem
-				),
-			33 => array(
-				'header' => 'Prodam ledničku s mrazákem',
-				'body' => 'Lednicka koupena roku 2008. Narocne pouzivana. Fungujici',
-				'prize' => 500,
-				'pictures' => array(), // nekde obrazky nebudou vubec => zobrazit cast body
-				),
-			);
 		//Zda je uzivatel prihlasen ci ne
-		if (empty($_POST["prihlasen"])) 
-		{	
+		if (empty($_POST["prihlasen"]))
+		{
 		$prihlasen = false;
 		} else
 		{
-		$prihlasen = true;	
+		$prihlasen = true;
 		}
 		$profile = array(
 			'nickname' => 'pribyto');
-
-		$this->template->inzeraty = $inzeraty;
 
 		$this->template->prihlasen = $prihlasen;
 
@@ -86,7 +138,7 @@ class HomepagePresenter extends BasePresenter {
 				array(
 					'type' => 'Email',
 					'contact' => 'tomas.pribyl.89@gmail.com',
-					'info' => ''),			
+					'info' => ''),
 				array(
 					'type' => 'Telefon',
 					'contact' => 604555666,
@@ -138,12 +190,12 @@ class HomepagePresenter extends BasePresenter {
 	}
 
 
-	/* --- --- TOVARNICKY PRESENTERU --- --- */	
+	/* --- --- TOVARNICKY PRESENTERU --- --- */
 	/**
 	 * Tovarnicka pro prihlasovaci formular.
 	 * @return Nette\Application\UI\Form
 	 */
-	protected function createComponentSignInForm() {		
+	protected function createComponentSignInForm() {
 		$form = $this->factory->create();
 		$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Přihlášení proběhlo bez problémů.');

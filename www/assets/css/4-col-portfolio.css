@@ -38,20 +38,33 @@ body {
     border-radius: 90px;
 }
 
+.inzerat_miniatura{
+    float: left;
+    margin: 1em;
+    padding-top: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
+    border: none;
+    height: 300px;
+    width: 260px;
+}
+.inzerat_miniatura img{
+    padding: 0px 10px;
+}
+
 .elektronika {
-    background-color: red;
+    background-color: #C80815;
 }
 
 .akce {
-    background-color: blue;
+    background-color: #0A224E;
 }
 
 .jidlo {
-    background-color: yellow;
+    background-color: #F7D708;
 }
 
 .jine {
-    background-color: green;
+    background-color: #9CCF31;
 }
 
 .thumbnail .caption-full {
