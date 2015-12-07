@@ -58,6 +58,9 @@ body {
 .akce {
     background-color: #0A224E;
 }
+.akce div{
+    color: white !important;
+}
 
 .jidlo {
     background-color: #F7D708;
