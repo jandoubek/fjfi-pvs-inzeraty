@@ -18,16 +18,9 @@
 
     <!-- jquery -->
     <script type="text/javascript" src="../assets/js/jquery/jquery-1.11.3.min.js"></script>
-    <!-- fancybox -->
-    <script type="text/javascript" src="../assets/js/fancybox/jquery.fancybox.js"></script>
-    <script type="text/javascript" src="../assets/js/fancybox/jquery.fancybox.pack.js"></script>
-    <link href="../assets/js/fancybox/jquery.fancybox.css" rel="stylesheet">
-
     <!-- Bootstrap Core CSS -->
     <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Formátování stránky -->
-
     <link href="../assets/css/4-col-portfolio.css" rel="stylesheet">
 
     <script type="text/javascript" src="../assets/js/main_page/main_page.js"></script>
@@ -54,12 +47,6 @@
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav nav-pills" role="tablist">
-                    <li>
-                        <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">inzerát zde</a>
-                    </li>
-                 </ul>
-
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <form class="navbar-form navbar-left" role="search">
@@ -105,26 +92,21 @@
         </div>
         <!-- /.row -->
 
-        <!-- Projects Row -->
         <div class="row">
-
-        {foreach $inzeraty as $mini_inzerat}
-        <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">
-            <div class="thumbnail inzerat_miniatura {$mini_inzerat['class']}">
-                <img src="../images/products/{$mini_inzerat['pictures']}" class="img-responsive" alt="">
-                <div class="caption">
-                    <h4 class="pull-right">{$mini_inzerat['prize']}</h4>
-                    <h4>{$mini_inzerat['header']}</h4>
-                    <p>{$mini_inzerat[body]}</p>
+        <!-- vypis jednotlivych inzeratu -->
+            {foreach $inzeraty as $mini_inzerat}
+            <a data-toggle="modal" href="../homepage/inzerat" data-target="#inzerat_modal">
+                <div class="thumbnail inzerat_miniatura {$mini_inzerat['class']}">
+                    <img src="../images/products/{$mini_inzerat['pictures']}" class="img-responsive" alt="">
+                    <div class="caption">
+                        <h4 class="pull-right">{$mini_inzerat['prize']}</h4>
+                        <h4>{$mini_inzerat['header']}</h4>
+                        <p>{$mini_inzerat[body]}</p>
+                    </div>
                 </div>
-            </div>
-        </a>
-        {/foreach}
-
-
-
+            </a>
+            {/foreach}
         </div>
-        <!-- /.row -->
 
         <hr>
 
