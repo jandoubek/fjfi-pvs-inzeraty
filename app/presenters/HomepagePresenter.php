@@ -125,7 +125,7 @@ class HomepagePresenter extends BasePresenter {
 		$this->template->profile = $this->database->findById('user', $id);
 		if(!$this->template->profile) {
 			$this->flashMessage('Je nám líto, ale hledaný uživatel v naší databázi není.');
-			$this->redirect('Homepage:defaultalternative2');
+			$this->redirect('Homepage:default');
 		}
 
 		/* zakomentovani, navazani na tomovu praci -> provazanim s DB
@@ -162,7 +162,7 @@ class HomepagePresenter extends BasePresenter {
 
 		if(!$this->template->inzerat) {
 			$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
-			$this->redirect('Homepage:defaultalternative2');
+			$this->redirect('Homepage:default');
 		}
 	}
 
@@ -172,7 +172,7 @@ class HomepagePresenter extends BasePresenter {
 		$gender_id = $this->user->identity->id_gender;
 		$this->getUser()->logout();
 		$this->flashMessage('Odhlášení proběhlo bez problémů.');
-		$this->redirect('Homepage:defaultalternative2');
+		$this->redirect('Homepage:default');
 	}
 
 
@@ -185,7 +185,7 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->factory->create();
 		$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Přihlášení proběhlo bez problémů.');
-			$this->redirect('Homepage:defaultalternative2');
+			$this->redirect('Homepage:default');
 		};
 		return $form;
 	}
@@ -194,7 +194,7 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->factoryy->create();
 		$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Registrace proběhla bez problémů.');
-			$this->redirect('Homepage:defaultalternative2');
+			$this->redirect('Homepage:default');
 		};
 		return $form;
 	}
