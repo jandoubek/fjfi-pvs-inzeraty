@@ -13,30 +13,30 @@
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
 	  <h4 class="modal-title"><b style="font-size:2em">{$profile->nickname}</b></h4>
 	</div>
-
+{form profile}
 	<div class="modal-body">
 		<div class="input-group col-xs-10 col-sm-offset-1" style="margin-bottom: 1em;">
 		  <span class="input-group-addon" id="profile_email" style="width: 7em">Email</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_email" id="profile_email_input" value="{$profile->email}">
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_email" name="profile_email_input" value="{$profile->email}">
 		</div>
 		<div class="input-group col-xs-10 col-sm-offset-1 mar-input" style="margin-bottom: 1em;">
 		  <span class="input-group-addon" id="profile_telefon" style="width: 7em">Telefon</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_telefon" id="profile_telephone_input" value="{$profile->phone}">
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_telefon" name="profile_telephone_input" value="{$profile->phone}">
 		</div>
 		<div class="input-group col-xs-10 col-sm-offset-1 mar-input" style="margin-bottom: 1em;">
-		  <span class="input-group-addon" id="profile_adress" style="width: 7em">Adresa</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_adress" id="profile_adress_input" value="{$profile->address}">
+		  <span class="input-group-addon" id="profile_address" style="width: 7em">Adresa</span>
+		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_address" name="profile_address_input" value="{$profile->address}">
 		</div><br />
 		<div class="form-group input-group col-xs-10 col-sm-offset-1">
 		  <label for="profile_comment">Komentář ke kontaktům a profilu:</label>
-		  <textarea class="form-control" rows="4" id="profile_comment" placeholder="Nevyplněno" id="profile_comment_input">{$profile->comment}</textarea>
+		  <textarea class="form-control" rows="4" id="profile_comment" placeholder="Nevyplněno" name="profile_comment_input">{$profile->comment}</textarea>
 		</div>
 	</div>
 
 	<div class="modal-footer">
-		<button type="button" class="btn btn-default" data-dismiss="modal" id="profile_save_and_close">Uložit a zavřít</button>
-	</div>
-
+		{input send}
+	</div><!--- akce po stisknutí tlačítka v profile.js -->
+    {/form}
 <!--- {*
 <form action="profil.php" method="post">
 

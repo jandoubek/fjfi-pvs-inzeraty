@@ -43,10 +43,10 @@ class RegisterFormFactory extends Nette\Object {
 			->setAttribute('placeholder', 'Nevyplněno')
 			->setRequired('Prosím vyplňte znovu Vaše heslo.');
 
-		$form->addText('email', 'Email:')
-			->setAttribute('class', 'form-control')
-			->setAttribute('placeholder', 'Nevyplněno')
-			->setRequired('Prosím vyplňte Váš email.');
+		//$form->addText('email', 'Email:')
+		//	->setAttribute('class', 'form-control')
+		//	->setAttribute('placeholder', 'Nevyplněno')
+		//	->setRequired('Prosím vyplňte Váš email.');
 
 
 
@@ -62,7 +62,7 @@ class RegisterFormFactory extends Nette\Object {
 
 		try {
 			$userManager = new Model\UserManager($this->user, $this->database);
-			$userManager->register($values->username, $values->password, $values->repassword, $values->email);
+			$userManager->register($values->username, $values->password, $values->repassword);
 		} catch (Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}

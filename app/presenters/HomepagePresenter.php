@@ -10,6 +10,7 @@ use Nette;
 use App\Model;
 use App\Forms\SignFormFactory;
 use App\Forms\RegisterFormFactory;
+use App\Forms\ProfileFormFactory;
 
 
 class HomepagePresenter extends BasePresenter {
@@ -19,6 +20,9 @@ class HomepagePresenter extends BasePresenter {
 
 		/** @var RegisterFormFactory @inject */
 		public $factoryy;
+
+		/** @var ProfileFormFactory @inject */
+		public $factoryyy;
 
 		/** @var Model\Database */
 		private $database;
@@ -194,6 +198,15 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->factoryy->create();
 		$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Registrace proběhla bez problémů.');
+			$this->redirect('Homepage:default');
+		};
+		return $form;
+	}
+
+	protected function createComponentProfile() {
+		$form = $this->factoryyy->create();
+		$form->onSuccess[] = function ($form) {
+			$this->flashMessage('Profile uložen.');
 			$this->redirect('Homepage:default');
 		};
 		return $form;

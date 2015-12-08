@@ -23,4 +23,5 @@ services:
 	- App\Model\Database
 	- App\Forms\SignFormFactory
 	- App\Forms\RegisterFormFactory
+	- App\Forms\ProfileFormFactory
 	router: App\RouterFactory::createRouter

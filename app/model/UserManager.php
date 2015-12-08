@@ -41,7 +41,7 @@ class UserManager {
 	    $this->user->login(new Security\Identity($row->id, null, $arr));
 	}
 
-	public function register($nick, $password, $repassword, $email) {
+	public function register($nick, $password, $repassword) {
 
 		$row = $this->database->table('user')->where('nickname', $nick)->fetch();
 
@@ -60,7 +60,6 @@ class UserManager {
 			$this->database->query('INSERT INTO user', array(
    		'nickname' => $nick,
    	  'password' =>  $this->generateHash($password),
-   	  'email' => $email,
 					));
 			}
 
@@ -78,6 +77,10 @@ class UserManager {
 		}
 
 		return crypt($password, $salt ?: '$2a$07$' . Strings::random(23));
+	}
+
+	public function saveprofile($email, $phone, $address, $comment) {
+			$this->database->query('UPDATE user set email=?,phone=?,address=?,comment=? WHERE nickname=?',$email,$phone,$address,$comment,$this->user->identity->nickname);//$this->database->table('user')->nickname
 	}
 
 }
