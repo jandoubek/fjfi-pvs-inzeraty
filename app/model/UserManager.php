@@ -57,11 +57,10 @@ class UserManager {
 		{
 			if ($password == $repassword)
 			{
-			$database->query('INSERT INTO user', array( // parametr může být pole
-			'id' => 2,
+			$this->database->query('INSERT INTO user', array(
    		'nickname' => $nick,
-   	  'password' => $password, // nebo objekt DateTime
-   	  'email' => $email, // nebo soubor
+   	  'password' =>  $this->generateHash($password),
+   	  'email' => $email,
 					));
 			}
 
