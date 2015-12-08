@@ -29,7 +29,8 @@ class HomepagePresenter extends BasePresenter {
 		$this->database = $database;
 	}
 
-	public function renderDefaultAlternative2(){
+	/* --- --- RENDER METODY PRESENTERU --- --- */
+	public function renderDefault() {
 		/* staticka data z DB */
 		$this->template->inzeraty = array(
 			1 => array( // ID inzeratu
@@ -96,11 +97,7 @@ class HomepagePresenter extends BasePresenter {
 				'pictures' => 'koncert.jpg',
 				),
 			);
-	}
 
-
-	/* --- --- RENDER METODY PRESENTERU --- --- */
-	public function renderDefault() {
 		$this->template->dbUser = $this->database->findById('user', 1);
 		// vytvorim objekt pomoci me modelove tridy v app/model
 		$mujZooObjekt = new Model\TestModelClass;

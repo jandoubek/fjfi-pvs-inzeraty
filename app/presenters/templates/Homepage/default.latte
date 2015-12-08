@@ -15,20 +15,17 @@
     <meta name="author" content="">
     <title>Úvodní stránka</title>
 
+
 	<!-- Nacteni knihoven -->
     <!-- jquery -->
     <script type="text/javascript" src="assets/js/jquery/jquery-1.11.3.min.js"></script>
-
-    <!-- fancybox -->
-    <script type="text/javascript" src="assets/js/fancybox/jquery.fancybox.js"></script>
-    <script type="text/javascript" src="assets/js/fancybox/jquery.fancybox.pack.js"></script>
-    <link href="assets/js/fancybox/jquery.fancybox.css" rel="stylesheet">
-
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Formátování stránky -->
     <link href="assets/css/4-col-portfolio.css" rel="stylesheet">
+
     <script type="text/javascript" src="assets/js/main_page/main_page.js"></script>
 </head>
 
@@ -44,29 +41,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
-                <a class="navbar-brand" href="#"> eNástěnka</a>
+                <a class="navbar-brand" href="#" style="color: white"> eNástěnka</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#" style="color:red">Elektronika</a>
-                    </li>
-                    <li>
-                        <a href="#" style="color:blue">Společenské akce</a>
-                    </li>
-                    <li>
-                        <a href="#" style="color:yellow">Jídlo</a>
-                    </li>
-                    <li>
-                        <a href="#" style="color:green">Jiné</a>
-                    </li>
-                    <li>
-                        <a data-toggle="modal" href="homepage/inzerat" data-target="#inzerat_modal">inzerát zatim tady</a>
-                    </li>
-                 </ul>
-
+                <ul class="nav navbar-nav navbar-left navbar_menu">
+                    <li><a style="color: #C80815" href="#"> Elektronika </a></li>
+                    <li><a style="color: #85C1F5 " href="#"> Společenské akce </a></li>
+                    <li><a style="color: #F7D708" href="#"> Jídlo </a></li>
+                    <li><a style="color: #9CCF31" href="#"> Jiné </a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
                         <form class="navbar-form navbar-left" role="search">
@@ -76,24 +60,22 @@
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         </form>
                     </li>
-               {if ($prihlasen)}
-                    <li>
-                    <a data-toggle="modal" href="homepage/profile" data-target="#profile_modal">{$profile['nickname']}</a>
-                    </li>
-                    <li>
-                    <a href="./defaultalternative2" data-target="#logout_modal">odhlásit</a>
-                    </li>                    
-                {else}
-                    <li>
-                    <a data-toggle="modal" href="homepage/login" data-target="#login_modal">přihlásit</a>
-                    </li>
-                    <li>
-                    <a data-toggle="modal" href="homepage/register" data-target="#register_modal">registrovat</a>
-                    </li>                
-
-                {/if}                    
+                    {if ($user->loggedIn)}
+                        <li>
+                            <a data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a>
+                        </li>
+                        <li>
+                            <a n:href="Homepage:logout" data-target="#logout_modal">odhlásit</a>
+                        </li>
+                    {else}
+                        <li>
+                            <a data-toggle="modal" data-target="#login_modal" href="homepage/login">přihlásit</a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" href="homepage/register" data-target="#register_modal">registrovat</a>
+                        </li>
+                    {/if}
                 </ul>
-
             </div>
             <!-- /.navbar-collapse -->
         </div>
@@ -112,174 +94,21 @@
         </div>
         <!-- /.row -->
 
-        <!-- Projects Row -->
         <div class="row">
-            <<div class="col-md-3" >
-                 <div class="thumbnail elektronika">
-                    <a href="#">
-                    	<img src="images/products/pocitac.jpg" class="img-responsive img-rounded" alt="">
-                     </a>
+        <!-- vypis jednotlivych inzeratu -->
+            {foreach $inzeraty as $mini_inzerat}
+            <a data-toggle="modal" href="homepage/inzerat" data-target="#inzerat_modal">
+                <div class="thumbnail inzerat_miniatura {$mini_inzerat['class']}">
+                    <img src="images/products/{$mini_inzerat['pictures']}" class="img-responsive" alt="">
                     <div class="caption">
-                        <h4 class="pull-right">245 CZK</h4>
-                        <h4>Pocitac</h4>
-                        <p>Muj stary pocitac ke koupi</p>
+                        <h4 class="pull-right">{$mini_inzerat['prize']}</h4>
+                        <h4>{$mini_inzerat['header']}</h4>
+                        <p>{$mini_inzerat[body]}</p>
                     </div>
                 </div>
-            </div>
-
-  			<div class="col-md-3" >
-                 <div class="thumbnail jine">
-                 	<a href="#">
-                        <img src="images/products/divadlo.jpeg" class="img-responsive img-rounded" alt="">
-                	</a>
-                    <div class="caption">
-                        <h4 class="pull-right">500 CZK</h4>
-                        <h4>Godot</h4>
-                        <p>SMam volny listek do divadlo,kdo se prida?</p>
-                    </div>
-                 </div>
-            </div>
-
-            <div class="col-md-3" >
-                <div class="thumbnail akce">
-	                <a href="#">
-	                    <img src="images/products/koncert.jpg" class="img-responsive img-rounded" alt="">
-	                </a>
-	                <div class="caption">
-	                    <h4 class="pull-right">200 CZK</h4>
-	                    <h4>Koncert</h4>
-	                    <p>Konert...</p>
-	                </div>
-            	</div>
-            </div>
-
-            <div class="col-md-3" >
-                <div class="thumbnail jidlo">
-	                <a href="#">
-	                    <img src="images/products/burger.jpg" class="img-responsive img-rounded" alt="">
-	                </a>
-                    <div class="caption">
-                        <h4 class="pull-right">0 CZK</h4>
-                        <h4>Burger night</h4>
-                        <p>Delam burgery pojdte se pridat</p>
-                    </div>
-            	</div>
-            </div>
+            </a>
+            {/foreach}
         </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-            <div class="col-md-3" >
-                 <div class="thumbnail elektronika">
-                    <a href="#">
-                    	<img src="images/products/pocitac.jpg" class="img-responsive img-rounded" alt="">
-                     </a>
-                    <div class="caption">
-                        <h4 class="pull-right">245 CZK</h4>
-                        <h4>Pocitac</h4>
-                        <p>Muj stary pocitac ke koupi</p>
-                    </div>
-                </div>
-            </div>
-
-  			<div class="col-md-3" >
-                 <div class="thumbnail jine">
-                 	<a href="#">
-                        <img src="images/products/divadlo.jpeg" class="img-responsive img-rounded" alt="">
-                	</a>
-                    <div class="caption">
-                        <h4 class="pull-right">500 CZK</h4>
-                        <h4>Godot</h4>
-                        <p>SMam volny listek do divadlo,kdo se prida?</p>
-                    </div>
-                 </div>
-            </div>
-
-           <div class="col-md-3" >
-                <div class="thumbnail akce">
-	                <a href="#">
-	                    <img src="images/products/koncert.jpg" class="img-responsive img-rounded" alt="">
-	                </a>
-	                <div class="caption">
-	                    <h4 class="pull-right">200 CZK</h4>
-	                    <h4>Koncert</h4>
-	                    <p>Konert...</p>
-	                </div>
-            	</div>
-            </div>
-
-            <div class="col-md-3" >
-                <div class="thumbnail jidlo">
-	                <a href="#">
-	                    <img src="images/products/burger.jpg" class="img-responsive img-rounded" alt="">
-	                </a>
-                    <div class="caption">
-                        <h4 class="pull-right">0 CZK</h4>
-                        <h4>Burger night</h4>
-                        <p>Delam burgery pojdte se pridat</p>
-                    </div>
-            	</div>
-            </div>
-        </div>
-        <!-- /.row -->
-
-        <!-- Projects Row -->
-        <div class="row">
-           <div class="col-md-3" >
-                 <div class="thumbnail elektronika">
-                    <a href="#">
-                    	<img src="images/products/pocitac.jpg" class="img-responsive img-rounded" alt="">
-                     </a>
-                    <div class="caption">
-                        <h4 class="pull-right">245 CZK</h4>
-                        <h4>Pocitac</h4>
-                        <p>Muj stary pocitac ke koupi</p>
-                    </div>
-                </div>
-            </div>
-
-  			<div class="col-md-3" >
-                 <div class="thumbnail jine">
-                 	<a href="#">
-                        <img src="images/products/divadlo.jpeg" class="img-responsive img-rounded" alt="">
-                	</a>
-                    <div class="caption">
-                        <h4 class="pull-right">500 CZK</h4>
-                        <h4>Godot</h4>
-                        <p>SMam volny listek do divadlo,kdo se prida?</p>
-                    </div>
-                 </div>
-            </div>
-
-            <div class="col-md-3" >
-                <div class="thumbnail akce">
-	                <a href="#">
-	                    <img src="images/products/koncert.jpg" class="img-responsive img-rounded" alt="">
-	                </a>
-	                <div class="caption">
-	                    <h4 class="pull-right">200 CZK</h4>
-	                    <h4>Koncert</h4>
-	                    <p>Konert...</p>
-	                </div>
-            	</div>
-            </div>
-
-            <div class="col-md-3" >
-                <div class="thumbnail jidlo">
-	                <a href="#">
-	                    <img src="images/products/burger.jpg" class="img-responsive img-rounded" alt="">
-	                </a>
-                    <div class="caption">
-                        <h4 class="pull-right">0 CZK</h4>
-                        <h4>Burger night</h4>
-                        <p>Delam burgery pojdte se pridat</p>
-                    </div>
-            	</div>
-            </div>
-        </div>
-        <!-- /.row -->
-
         <hr>
 
         <!-- Pagination -->
@@ -344,6 +173,30 @@
 
     </div>
     <!-- /.container -->
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+    </div>
+
+
+
 
 <!-- PopUp pomoci bootstrap, naplni se to profile.latte -->
 <div id="profile_modal" class="modal fade" role="dialog">
