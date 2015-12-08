@@ -26,7 +26,7 @@
     <script src="../assets/js/jquery.blueimp-gallery.min.js"></script>
     <script src="../assets/js/bootstrap-image-gallery.js"></script>
     <link rel="stylesheet" href="../assets/css/blueimp-gallery.min.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap-image-gallery.css">   
+    <link rel="stylesheet" href="../assets/css/bootstrap-image-gallery.css">
 </head>
 
 <body>
@@ -39,7 +39,7 @@
   <div class="modal-body">
       <h3>Stránka pro běžného uživatele</h3>
 
-      <h1> <?php echo $nazev; ?> </h1>
+      <h1> {$inzerat["title"]} </h1>
       <br>
 
 <h4> <b>Galerie</b> </h4>
@@ -47,15 +47,15 @@
     <div id="links">
         <a href="../images/lednicka1.jpg" title="1. obrázek" data-gallery>
           <img src="../images/thumbnails/lednicka1.jpg" alt="1. obrázek">
-        </a>        
+        </a>
 
         <a href="../images/lednicka2.jpg" title="2. obrázek" data-gallery>
           <img src="../images/thumbnails/lednicka2.jpg" alt="2. obrázek">
-        </a> 
+        </a>
 
         <a href="../images/lednicka3.jpg" title="3. obrázek" data-gallery>
           <img src="../images/thumbnails/lednicka3.jpg" alt="3. obrázek">
-        </a>         
+        </a>
     </div>
 
   <br>
@@ -101,7 +101,7 @@
 
    <label for="popis">Popis</label>
      <textarea readonly class="form-control" rows="5" style="color: black; background-color: white">
-Prodám ledničku značky Whirlpool BLF 8121 W. Je téměř nová, asi rok používaná, ale do strahovského pokoje moc velká. Má i velký mrazák.
+{$inzerat["body"]}
       </textarea>
 
     <br>
@@ -129,20 +129,20 @@ Mně teda vůbec.
         </textarea>
 
 
- 
+
         <label for="prispevek">Honza, 23. 11. 2015, 12:50</label>
         <textarea readonly class="form-control" rows="2" style="color: black; background-color: white">
 Tak si ji nekupuj.
-        </textarea>        
+        </textarea>
 
 
 
 
    <br><br>
    <h3> Stránka pro editaci </h3>
-   <br>   
+   <br>
        <label for="nazev_inzeratu">Název inzerátu</label>
-           <input class="form-control input-lg" type="text" id="nazev_inzeratu" placeholder="<?php echo $nazev ?>">
+           <input class="form-control input-lg" type="text" id="nazev_inzeratu" placeholder="{$inzerat["title"]}">
    <br>
    <label>Vyberte kategorii:</label>
    <select class="form-control">
@@ -160,15 +160,15 @@ Tak si ji nekupuj.
     <div id="links">
         <a href="../images/lednicka1.jpg" title="1. obrázek" data-gallery>
           <img src="../images/thumbnails/lednicka1.jpg" alt="1. obrázek">
-        </a>        
+        </a>
 
         <a href="../images/lednicka2.jpg" title="2. obrázek" data-gallery>
           <img src="../images/thumbnails/lednicka2.jpg" alt="2. obrázek">
-        </a> 
+        </a>
 
         <a href="../images/lednicka3.jpg" title="3. obrázek" data-gallery>
           <img src="../images/thumbnails/lednicka3.jpg" alt="3. obrázek">
-        </a>         
+        </a>
     </div>
 
   <br>
@@ -252,16 +252,16 @@ Mně teda vůbec.
         </textarea>
 
 
- 
+
         <label for="prispevek">Honza, 23. 11. 2015, 12:50</label>
         <textarea readonly class="form-control" rows="2" style="background-color: white">
 Tak si ji nekupuj.
-        </textarea> 
+        </textarea>
 
   </div> <!-- modal-body -->
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" data-dismiss="modal" id="inzerat_save_and_close">Uložit a zavřít</button> 
+    <button type="button" class="btn btn-default" data-dismiss="modal" id="inzerat_save_and_close">Uložit a zavřít</button>
     <button type="button" class="btn btn-default" data-dismiss="modal">Zavřít</button>
   </div>
 
