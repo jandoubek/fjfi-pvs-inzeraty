@@ -160,12 +160,6 @@ class HomepagePresenter extends BasePresenter {
 
 
 	public function renderInzerat($id = NULL) {
-/*
-		$inzerat = array(
-			'id' => 1,
-			'id_user' => 1,
-			'title' => 'Plyšový koník Toník',
-		); // */
 
 		$this->template->inzerat = $this->database->findById('poster', 1);
 
@@ -173,13 +167,6 @@ class HomepagePresenter extends BasePresenter {
 			$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
 			$this->redirect('Homepage:defaultalternative2');
 		}
-/*
-		$nazev = "Lednička Whirlpool BLF 8121 W";
-
-		$prihlasen_autor = true;
-
-		$this->template->nazev = $nazev;
-		$this->template->prihlasen_autor = $prihlasen_autor;	*/
 	}
 
 
