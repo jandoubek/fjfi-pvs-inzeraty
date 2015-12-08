@@ -8,7 +8,7 @@ use Nette\Application\UI\Form;
 use Nette\Security\User;
 
 
-class SignFormFactory extends Nette\Object {
+class RegisterFormFactory extends Nette\Object {
 
 		/** @var User */
 		private $user;
@@ -38,9 +38,19 @@ class SignFormFactory extends Nette\Object {
 			->setAttribute('placeholder', 'Nevyplněno')
 			->setRequired('Prosím vyplňte Vaše heslo.');
 
-		$form->addCheckbox('remember', 'Chcete zůstat přihlášen?');
+		$form->addPassword('repassword', 'RePassword:')
+			->setAttribute('class', 'form-control')
+			->setAttribute('placeholder', 'Nevyplněno')
+			->setRequired('Prosím vyplňte znovu Vaše heslo.');
 
-		$form->addSubmit('send', 'Přihlásit')
+		$form->addText('email', 'Email:')
+			->setAttribute('class', 'form-control')
+			->setAttribute('placeholder', 'Nevyplněno')
+			->setRequired('Prosím vyplňte Váš email.');
+
+
+
+		$form->addSubmit('send', 'Registrovat')
 		->setAttribute('class', 'btn btn-primary');
 
 		$form->onSuccess[] = array($this, 'formSucceeded');
@@ -49,15 +59,10 @@ class SignFormFactory extends Nette\Object {
 
 
 	public function formSucceeded(Form $form, $values) {
-		if ($values->remember) {
-			$this->user->setExpiration('14 days', FALSE);
-		} else {
-			$this->user->setExpiration('20 minutes', TRUE);
-		}
 
 		try {
 			$userManager = new Model\UserManager($this->user, $this->database);
-			$userManager->login($values->username, $values->password);
+			$userManager->register($values->username, $values->password, $values->repassword, $values->email);
 		} catch (Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());
 		}

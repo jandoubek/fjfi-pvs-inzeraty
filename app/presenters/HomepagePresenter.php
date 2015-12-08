@@ -9,12 +9,16 @@ namespace App\Presenters;
 use Nette;
 use App\Model;
 use App\Forms\SignFormFactory;
+use App\Forms\RegisterFormFactory;
 
 
 class HomepagePresenter extends BasePresenter {
 
 		/** @var SignFormFactory @inject */
 		public $factory;
+
+		/** @var RegisterFormFactory @inject */
+		public $factoryy;
 
 		/** @var Model\Database */
 		private $database;
@@ -195,10 +199,19 @@ class HomepagePresenter extends BasePresenter {
 	 * Tovarnicka pro prihlasovaci formular.
 	 * @return Nette\Application\UI\Form
 	 */
-	protected function createComponentSignInForm() {
+	protected function createComponentSign() {
 		$form = $this->factory->create();
 		$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Přihlášení proběhlo bez problémů.');
+			$this->redirect('Homepage:defaultalternative2');
+		};
+		return $form;
+	}
+
+	protected function createComponentRegister() {
+		$form = $this->factoryy->create();
+		$form->onSuccess[] = function ($form) {
+			$this->flashMessage('Registrace proběhla bez problémů.');
 			$this->redirect('Homepage:defaultalternative2');
 		};
 		return $form;

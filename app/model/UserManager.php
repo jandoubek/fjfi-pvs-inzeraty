@@ -24,7 +24,7 @@ class UserManager {
 
 
 	public function login($nick, $password) {
-	    
+
 		$row = $this->database->table('user')->where('nickname', $nick)->fetch();
 
 		if (!$row) {
@@ -41,17 +41,43 @@ class UserManager {
 	    $this->user->login(new Security\Identity($row->id, null, $arr));
 	}
 
+	public function register($nick, $password, $repassword, $email) {
+
+		$row = $this->database->table('user')->where('nickname', $nick)->fetch();
+
+		if ($row) {
+			throw new Security\AuthenticationException('Zadaná přezdívka již existuje.');
+		}
+
+		if ($password != $repassword) {
+			throw new Security\AuthenticationException('Zadaná hesla se neshodují.');
+		}
+
+		if (!$row)
+		{
+			if ($password == $repassword)
+			{
+			$database->query('INSERT INTO user', array( // parametr může být pole
+			'id' => 2,
+   		'nickname' => $nick,
+   	  'password' => $password, // nebo objekt DateTime
+   	  'email' => $email, // nebo soubor
+					));
+			}
+
+		}
+	}
 
 	/**
 	 * Generuje hash hesla i se solicim retezcem
 	 * @return string
 	 */
 	public function generateHash($password, $salt = NULL) {
-		
+
 		if ($password === Strings::upper($password)) { // v pripade zapleho capslocku
 			$password = Strings::lower($password);
 		}
-		
+
 		return crypt($password, $salt ?: '$2a$07$' . Strings::random(23));
 	}
 

@@ -13,12 +13,12 @@
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
 	  <h4 class="modal-title"><b style="font-size:2em">přihlášení</b></h4>
 	</div>
-    {form signInForm}
+    {form sign}
         <div class="modal-body">
             <!-- vykreslení chyb -->
             <ul class="errors" n:if="$form->hasErrors()">
                 <li n:foreach="$form->errors as $error">{$error}</li>
-            </ul> 
+            </ul>
             <div class="col-xs-10 col-sm-offset-1 warn-msg">
             	Zatím není hotová registrace. Přihlašovací údaje k účtu, který je v db jsou:
             	<table>
