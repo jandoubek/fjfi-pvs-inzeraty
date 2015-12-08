@@ -160,6 +160,9 @@ class HomepagePresenter extends BasePresenter {
 
 		$this->template->inzerat = $this->database->findById('poster', 1);
 
+		$this->template->user_id = 0;
+		$this->template->autor_id = $this->template->inzerat->id_user;
+
 		if(!$this->template->inzerat) {
 			$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
 			$this->redirect('Homepage:default');
