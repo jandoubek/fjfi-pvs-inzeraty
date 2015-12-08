@@ -38,6 +38,10 @@ body {
     border-radius: 90px;
 }
 
+.navbar_menu a{
+    font-weight: bold;
+}
+
 .inzerat_miniatura{
     float: left;
     margin: 1em;
