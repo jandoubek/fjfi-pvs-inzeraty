@@ -19,10 +19,10 @@ class HomepagePresenter extends BasePresenter {
 		public $factory;
 
 		/** @var RegisterFormFactory @inject */
-		public $factoryy;
+		public $factory2;
 
 		/** @var ProfileFormFactory @inject */
-		public $factoryyy;
+		public $factory3;
 
 		/** @var Model\Database */
 		private $database;
@@ -126,37 +126,11 @@ class HomepagePresenter extends BasePresenter {
 
 	public function renderProfile($id = null) {
 
-		$this->template->profile = $this->database->findById('user', $id);
+		$this->template->profile = $this->database->findById('user', $id); //načtění polí profilu z databáze
 		if(!$this->template->profile) {
 			$this->flashMessage('Je nám líto, ale hledaný uživatel v naší databázi není.');
 			$this->redirect('Homepage:default');
 		}
-
-		/* zakomentovani, navazani na tomovu praci -> provazanim s DB
-		// !! nepouzivat uvozovky "", jsou pomalejsi nez ''
-		//defaultní hodnoty proměnných
-		$profile = array(
-			'nickname' => 'pribyto',
-			'password' => 'nevim',
-			'email' => 'tomas.pribyl.89@gmail.com',
-			'contacts' => array(
-				array(
-					'type' => 'Email',
-					'contact' => 'tomas.pribyl.89@gmail.com',
-					'info' => ''),
-				array(
-					'type' => 'Telefon',
-					'contact' => 604555666,
-					'info' => ''),
-				array(
-					'type' => 'Adresa',
-					'contact' => 'koleje Strahov, blok 3, pokoj 105',
-					'info' => 'jen behem tydne'),
-				),
-			'comment' => 'Telefonní číslo je smyšlené a na uvedené adrese mě nikdy nenajdete, takže zkuste radši email.',
-			);
-
-		$this->template->profile = $profile;*/
 	}
 
 
@@ -195,7 +169,7 @@ class HomepagePresenter extends BasePresenter {
 	}
 
 	protected function createComponentRegister() {
-		$form = $this->factoryy->create();
+		$form = $this->factory2->create();
 		$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Registrace proběhla bez problémů.');
 			$this->redirect('Homepage:default');
@@ -204,7 +178,7 @@ class HomepagePresenter extends BasePresenter {
 	}
 
 	protected function createComponentProfile() {
-		$form = $this->factoryyy->create();
+		$form = $this->factory3->create();
 		$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Profile uložen.');
 			$this->redirect('Homepage:default');

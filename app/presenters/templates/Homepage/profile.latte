@@ -35,38 +35,8 @@
 
 	<div class="modal-footer">
 		{input send}
-	</div><!--- akce po stisknutí tlačítka v profile.js -->
+	</div><!--- akce po stisknutí tlačítka v ProfileFormFactory.php -->
     {/form}
-<!--- {*
-<form action="profil.php" method="post">
-
-	ikona: <img width="50" height="50" src="../images/profil.jpg"/>
-	<INPUT type="button" id="zmenitikonu" onClick="zmenitikonu()" value="změnit ikonu"><br>
-	přezdívka: {$profile['nickname']}<br>
-	email: <input type="text" size="30" class="profile_input" name="email" value="{$profile['email']}" readonly="readonly"><br>
-	<INPUT type="button" id="zmenitheslo" onClick="zmenitheslo()" value="změnit heslo"><br><br>
-
-
-	Kontakty zobrazené u inzerátů:<br>
-
-	<br />
-
-	<table rules="all">
-		<tr>
-			<td >typ kontaktu</td><td>kontakt</td><td>poznámka ke kontaktu</td>
-		</tr>
-		{foreach $profile['contacts'] as $contact}
-		<tr id="kontakty{$contact['type']}">
-			<td>{$contact['type']}</td><td><input type="text" size="30" name="contact" class="profile_input" value="{$contact['contact']}" readonly="readonly"></td><td><input type="text" class="profile_input" name="info" value="{$contact['info']}" readonly="readonly"></td>
-			<td><input type="button" id="smazat{$contact['type']}"value="smazat kontakt"></td>
-		</tr>
-		{/foreach}
-	</table>
-	<br><br>
-	<input type="button" id="editovat_profil" name="editace" value="Editovat profil">
-	<input type="button" id="ulozit_profil" value="uložit změny">
-</form>
-*} -->
-
+<!---    -->
 </body>
 </html>
