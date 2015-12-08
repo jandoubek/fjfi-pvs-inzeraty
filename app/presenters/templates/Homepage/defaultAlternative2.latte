@@ -38,16 +38,18 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-
                 <a class="navbar-brand" href="#" style="color: white"> eNástěnka</a>
-                <a class="navbar-brand" style="color: #C80815" href="#"> Elektronika </a>
-                <a class="navbar-brand" style="color: #85C1F5 " href="#"> Společenské akce </a>
-                <a class="navbar-brand" style="color: #F7D708" href="#"> Jídlo </a>
-                <a class="navbar-brand" style="color: #9CCF31" href="#"> Jiné </a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-left navbar_menu">
+                    <li><a style="color: #C80815" href="#"> Elektronika </a></li>
+                    <li><a style="color: #85C1F5 " href="#"> Společenské akce </a></li>
+                    <li><a style="color: #F7D708" href="#"> Jídlo </a></li>
+                    <li><a style="color: #9CCF31" href="#"> Jiné </a></li>
+                </ul>
                 <ul class="nav navbar-nav navbar-right">
+                    <!--<li><a data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a></li>-->
                     <li>
                         <form class="navbar-form navbar-left" role="search">
                             <div class="form-group">
@@ -56,24 +58,22 @@
                             <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
                         </form>
                     </li>
-               {if ($user->loggedIn)}
-                    <li>
-                    <a data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a>
-                    </li>
-                    <li>
-                    <a n:href="Homepage:logout" data-target="#logout_modal">odhlásit</a>
-                    </li>
-                {else}
-                    <li>
-                    <a data-toggle="modal" href="../homepage/login" data-target="#login_modal">přihlásit</a>
-                    </li>
-                    <li>
-                    <a data-toggle="modal" href="../homepage/register" data-target="#register_modal">registrovat</a>
-                    </li>
-
-                {/if}
+                    {if ($user->loggedIn)}
+                        <li>
+                            <a data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a>
+                        </li>
+                        <li>
+                            <a n:href="Homepage:logout" data-target="#logout_modal">odhlásit</a>
+                        </li>
+                    {else}
+                        <li>
+                            <a data-toggle="modal" href="../homepage/login" data-target="#login_modal">přihlásit</a>
+                        </li>
+                        <li>
+                            <a data-toggle="modal" href="../homepage/register" data-target="#register_modal">registrovat</a>
+                        </li>
+                    {/if}
                 </ul>
-
             </div>
             <!-- /.navbar-collapse -->
         </div>
