@@ -30,12 +30,12 @@ class SignFormFactory extends Nette\Object {
 		$form = new Form;
 		$form->addText('username', 'Username:')
 			->setAttribute('class', 'form-control')
-			->setAttribute('placeholder', 'Nevyplněno')
+			->setAttribute('placeholder', 'Nevyplněno ->pro test zadat: prcharom')
 			->setRequired('Prosím vyplňte Váš nick.');
 
 		$form->addPassword('password', 'Password:')
 			->setAttribute('class', 'form-control')
-			->setAttribute('placeholder', 'Nevyplněno')
+			->setAttribute('placeholder', 'Nevyplněno ->pro test zadat: kolotoc')
 			->setRequired('Prosím vyplňte Vaše heslo.');
 
 		$form->addCheckbox('remember', 'Chcete zůstat přihlášen?');

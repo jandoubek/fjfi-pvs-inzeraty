@@ -7,3 +7,17 @@ td    {padding: 5px;}
 
 #profile_icon{height: 45px; width: 45px; margin-right: 1.6em;}
 .input-group-addon{font-weight: bold;}
+
+/* proč to tady nefunguje?
+div.mar-input {
+    margin-bottom: 1em;
+}*/
+
+label > input {
+    float: left;
+}
+
+label {
+    color: #555;
+    font-weight: normal;
+}
