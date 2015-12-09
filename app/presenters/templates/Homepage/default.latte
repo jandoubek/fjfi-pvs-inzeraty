@@ -26,6 +26,7 @@
     <link href="assets/css/4-col-portfolio.css" rel="stylesheet">
 
     <script type="text/javascript" src="assets/js/main_page/main_page.js"></script>
+    <script type="text/javascript" src="js/dotdotdot/jquery.dotdotdot.js"></script>
 </head>
 
 <body>
@@ -98,12 +99,22 @@
             {foreach $inzeraty as $mini_inzerat}
             <a data-toggle="modal" href="homepage/inzerat" data-target="#inzerat_modal">
                 <div class="thumbnail inzerat_miniatura {$mini_inzerat['class']}">
-                    <img src="images/products/{$mini_inzerat['pictures']}" class="img-responsive" alt="">
-                    <div class="caption">
-                        <h4 class="pull-right">{$mini_inzerat['prize']}</h4>
-                        <h4>{$mini_inzerat['header']}</h4>
-                        <p>{$mini_inzerat[body]}</p>
-                    </div>
+                    {if $mini_inzerat['pictures'] != null}
+                        <div class="caption">
+                            <h4 class="pull-right">{$mini_inzerat['prize']}</h4>
+                            <h4>{$mini_inzerat['header']}</h4>
+                            <div class="truncate mini_body">{$mini_inzerat[body]}</div>
+                            <div class="gallery">
+                                <img src="images/products/{$mini_inzerat['pictures']}" class="img-responsive" alt="">
+                            </div>
+                        </div>
+                    {else}
+                        <div class="caption mini_body">
+                            <h4 class="pull-right">{$mini_inzerat['prize']}</h4>
+                            <h4>{$mini_inzerat['header']}</h4>
+                            {$mini_inzerat[body]}
+                        </div>
+                    {/if}
                 </div>
             </a>
             {/foreach}

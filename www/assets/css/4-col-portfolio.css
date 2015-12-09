@@ -31,7 +31,8 @@ body {
 }
 
 .thumbnail {
-    padding: 0;
+    padding: 2px;
+    border-radius: 0px;
 }
 
 .thumbnail_inner {
@@ -42,18 +43,10 @@ body {
     font-weight: bold;
 }
 
-.inzerat_miniatura{
-    float: left;
-    margin: 1em;
-    padding-top: 10px;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7);
-    border: none;
-    height: 260px;
-    width: 240px;
-}
-.inzerat_miniatura img{
-    padding: 0px 10px;
-}
+.inzerat_miniatura{ float: left; margin: 1em; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); border: none; height: 260px; width: 240px;}
+.inzerat_miniatura .caption{ height: 100%; }
+.inzerat_miniatura .truncate{ height: 30%; }
+.inzerat_miniatura img{ max-height: 100px; width: auto; margin-left: auto; margin-right: auto; margin-top: 1.2em;}
 
 .elektronika {
     background-color: #C80815;

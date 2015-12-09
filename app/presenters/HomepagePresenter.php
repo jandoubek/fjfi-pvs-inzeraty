@@ -44,14 +44,14 @@ class HomepagePresenter extends BasePresenter {
 			1 => array( // ID inzeratu
 				'class' => 'elektronika',
 				'header' => 'Pocitac',
-				'body' => 'Muj stary pocitac ke koupi',
+				'body' => 'Muj stary pocitac ke koupi. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu.',
 				'prize' => 250,
 				'pictures' => 'pocitac.jpg',
 				),
 			2 => array(
 				'class' =>'akce',
 				'header' => 'Godot',
-				'body' => 'Mam volny listek do divadla, kdo se prida? Ctvrtek 19:00.',
+				'body' => 'Mam volny listek do divadla, kdo se prida? Ctvrtek 19:00. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. ',
 				'prize' => 500,
 				'pictures' => '',
 				),
