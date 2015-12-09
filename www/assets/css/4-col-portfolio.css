@@ -49,18 +49,15 @@ body {
 .inzerat_miniatura img{ max-height: 100px; width: auto; margin-left: auto; margin-right: auto; margin-top: 1.2em;}
 
 .elektronika {
-    background-color: #C80815;
+    background-color: #e53e1b;
 }
 
 .akce {
-    background-color: #0A224E;
-}
-.akce div{
-    color: white !important;
+    background-color: #2b5bb5;
 }
 
 .jidlo {
-    background-color: #F7D708;
+    background-color: #f7da20;
 }
 
 .jine {
