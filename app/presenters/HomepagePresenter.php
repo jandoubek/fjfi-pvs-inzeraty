@@ -194,6 +194,7 @@ class HomepagePresenter extends BasePresenter {
 			$this->redirect('Homepage:default');
 		};
 		return $form;
+	}
 
 	protected function createComponentComment(){
 		$form = $this->factory4->create();
