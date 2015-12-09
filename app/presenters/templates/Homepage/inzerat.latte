@@ -3,35 +3,34 @@
 
 <head>
   <meta charset="utf-8">
-
-    <!-- Bootstrap Core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Formátování stránky -->
-    <link href="assets/css/4-col-portfolio.css" rel="stylesheet">
-
-
-    <script src="assets/js/jquery/jquery-1.11.3.min.js"></script>
-
-    <script type="text/javascript" src="assets/js/main_page/main_page.js"></script>
-
-    <script src="assets/js/bootstrap.min.js"></script>
-
     <script src="js/inzerat.js"></script>
-    <link href="css/inzerat.css" rel="stylesheet">
-
     <script src="assets/js/jquery.blueimp-gallery.min.js"></script>
     <script src="assets/js/bootstrap-image-gallery.js"></script>
     <link rel="stylesheet" href="assets/css/blueimp-gallery.min.css">
     <link rel="stylesheet" href="assets/css/bootstrap-image-gallery.css">
+
+    <style>
+      ul {
+        padding:0 0 0 0;
+        margin:0 0 40px 0;
+      }
+
+      ul li {
+        list-style:none;
+        margin-bottom:10px;
+      }
+    </style>
+  </meta>
 </head>
 
 <body>
 <!--- modal-header, modal-body a modal-footer tvori strukturu PopUpu pomoci bootstrap -->
    <div class="modal-header">
-     {if $user_id == $autor_id}
-       <label for="nazev_inzeratu">Název inzerátu</label>
-       <input class="form-control input-lg" type="text" id="nazev_inzeratu" placeholder="{$inzerat["title"]}">
+     {if $user_id == $autor_id || true}
+      <div class="input-group">
+        <span class="input-group-addon" id="nazev_inzeratu" style="width: 7em"><b>Název inzerátu</b></span>
+        <input type="text" class="form-control" placeholder="Vyplňte prosím"  value="{$inzerat['title']}">
+      </div>
      {else}
        <b> {$inzerat->title} </b>
     {/if}
