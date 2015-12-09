@@ -10,6 +10,7 @@ use Nette;
 use App\Model;
 use App\Forms\SignFormFactory;
 use App\Forms\RegisterFormFactory;
+use App\Forms\CommentFormFactory;
 
 
 class HomepagePresenter extends BasePresenter {
@@ -19,6 +20,9 @@ class HomepagePresenter extends BasePresenter {
 
 		/** @var RegisterFormFactory @inject */
 		public $factoryy;
+
+		/** @var CommentFormFactory @inject */
+		public $factoryyy;
 
 		/** @var Model\Database */
 		private $database;
@@ -160,13 +164,16 @@ class HomepagePresenter extends BasePresenter {
 
 		$this->template->inzerat = $this->database->findById('poster', 1);
 
-		$this->template->user_id = 0;
-		$this->template->autor_id = $this->template->inzerat->id_user;
-
 		if(!$this->template->inzerat) {
 			$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
 			$this->redirect('Homepage:default');
 		}
+
+		$this->template->user_id = 0;
+		$this->template->autor_id = $this->template->inzerat->id_user;
+
+		$this->template->comments = $this->database->find('komenty', 'id_poster', 1);
+
 	}
 
 
@@ -200,6 +207,15 @@ class HomepagePresenter extends BasePresenter {
 			$this->redirect('Homepage:default');
 		};
 		return $form;
+	}
+
+	protected function createComponentComment(){
+		$form = $this->factoryyy->create();
+        $form->onSuccess[] = function ($form) {
+			$this->flashMessage('Váš příspěvek byl uložen.');
+			$this->redirect('Homepage:default');
+		};
+        return $form;
 	}
 
 }

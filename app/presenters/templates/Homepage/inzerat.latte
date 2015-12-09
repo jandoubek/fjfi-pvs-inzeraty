@@ -132,25 +132,16 @@
 
     <h4> Diskuze </h4>
 
-
-        <label for="prispevek">Honza, 23. 11. 2015, 12:45</label>
+    {foreach $comments as $komentar}
+        <label for="prispevek">{$komentar->jmeno} {$komentar->prijm}, {$komentar->datum}</label>
         <textarea readonly class="form-control" rows="auto" style="color: black; background-color: white">
-Ta lednička se mi líbí.
+{$komentar->body}
         </textarea>
+    {/foreach}
 
-
-
-        <label for="prispevek">Vašek, 23. 11. 2015, 12:48</label>
-        <textarea readonly class="form-control" rows="auto" style="color: black; background-color: white">
-Mně teda vůbec.
-        </textarea>
-
-
-
-        <label for="prispevek">Honza, 23. 11. 2015, 12:50</label>
-        <textarea readonly class="form-control" rows="auto" style="color: black; background-color: white">
-Tak si ji nekupuj.
-        </textarea>
+        <br>
+        <h4> Přidat komentář</h4>
+        {control comment}
 
   </div> <!-- modal-body -->
 

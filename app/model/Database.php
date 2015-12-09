@@ -9,7 +9,7 @@ class Database extends Nette\Object
 {
 	/** @var Nette\Database\Context */
 	private $database;
-  
+
 
 	public function __construct(Nette\Database\Context $database)
 	{
@@ -17,7 +17,7 @@ class Database extends Nette\Object
 	}
 
   /********************* findAll *********************/
-  
+
   // vstupem nazev tabulky
   // vystup vybrana tabulka (objekt)
   /** @return Nette\Database\Table\Selection */
@@ -25,9 +25,9 @@ class Database extends Nette\Object
 	{
     return $this->database->table($what);
 	}
-  
+
     /********************* findByUser *********************/
-  
+
   // vstupem nazev tabulky a id uzivatele
   // vystupem vybrana cast tabulky pro urciteho uzivatele (objekt)
   /** @return Nette\Database\Table\Selection */
@@ -37,17 +37,27 @@ class Database extends Nette\Object
 	}
 
   /********************* findById *********************/
-  
+
   // vstupem nazev tabulky a id, ktere hledam
   // vystupem vybrany radek z tabulky dle id (objekt)
   /** @return Nette\Database\Table\ActiveRow */
 	public function findById($what,$id)
 	{
 		return $this->findAll($what)->get($id);
-	} 
+	}
+
+  /************************ find ************************/
+
+  // vstupem nazev tabulky, jméno sloupce a klíč, podle kterého se udělá restrikce
+  // vystupem vybrany radek z tabulky dle klíče (objekt)
+  /** @return Nette\Database\Table\ActiveRow */
+  public function find($what, $col_name, $key)
+  {
+    return $this->findAll($what)->where($col_name, $key);
+  }
 
   /********************* insert *********************/
-  
+
   // vstupem nazev tabulky a pole vkladanych dat
   // vystupem vlozena data v tabulce
   /** @return Nette\Database\Table\ActiveRow */
@@ -57,9 +67,9 @@ class Database extends Nette\Object
 	}
 
   /********************* array *********************/
-  
+
   // tvorba pole id a libovolneho sloupecku z db tabulky
-  // vstupem nazev tabulky, vybrany sloupec, prvni podminka (nepovinna) a druha podminka (nepovinna) 
+  // vstupem nazev tabulky, vybrany sloupec, prvni podminka (nepovinna) a druha podminka (nepovinna)
   // vystupem pole, pole[id] = hodnota sloupce pro toto id
   public function arrayColumn($what,$column,$condition1=null,$condition2=null)
 	{
@@ -72,7 +82,7 @@ class Database extends Nette\Object
     }
     // pokud jedna z nich zadana -> proved tu co je zadana
     elseif(($condition1 != null && $condition2 == null) || ($condition1 == null && $condition2 != null))
-    { 
+    {
       if($condition1 == null)
       {
         foreach ($this->findAll($what)->where($condition2) as $value) {
@@ -92,15 +102,15 @@ class Database extends Nette\Object
       foreach ($this->findAll($what)->where($condition1)->where($condition2) as $value) {
         $values[$value->id] = $value->$column;
       }
-    }    
-  
+    }
+
     if(isset($values))
       return $values;
     else
-		  return NULL; 
+		  return NULL;
 	}
-  
-  // tvorba pole id a libovolneho sloupecku z db tabulky pro konkretniho uzivatele 
+
+  // tvorba pole id a libovolneho sloupecku z db tabulky pro konkretniho uzivatele
   // vstupem nazev tabulky, id uzivatele a nazev sloupce
   // vystupem pole, pole[id] = hodnota sloupce pro toto id
   public function arrayColumnForUser($what,$user,$column)
@@ -111,7 +121,7 @@ class Database extends Nette\Object
     if(isset($values))
       return $values;
     else
-		  return NULL; 
+		  return NULL;
 	}
- 
+
 }
