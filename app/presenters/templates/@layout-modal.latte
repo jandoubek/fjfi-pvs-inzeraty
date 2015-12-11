@@ -1,0 +1,44 @@
+{**
+ * @param string   $basePath web base path
+ * @param array    $flashes  flash messages
+ *}
+<!DOCTYPE html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Roman Prchal">
+
+	<!-- Custom CSS -->
+    <link href="css/login.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	{block head}{/block}
+</head>
+
+<body>
+
+    {include content}
+
+	{block scripts}
+
+	<!-- jQuery -->
+    <script src="{$basePath}/assets/js/jquery.js"></script>
+
+    <!-- Nette Ajax -->
+    <script src="{$basePath}/js/nette.ajax.js"></script>
+
+    <!-- My Custome JavaScript -->
+    <script src="{$basePath}/js/main.js"></script>
+    
+	{/block}
+</body>
+</html>

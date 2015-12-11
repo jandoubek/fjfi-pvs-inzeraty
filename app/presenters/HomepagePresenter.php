@@ -173,7 +173,7 @@ class HomepagePresenter extends BasePresenter {
 		$form = $this->factory->create();
 		$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Přihlášení proběhlo bez problémů.');
-			$this->redirect('Homepage:default');
+		    $this->redirect('Homepage:default');
 		};
 		return $form;
 	}

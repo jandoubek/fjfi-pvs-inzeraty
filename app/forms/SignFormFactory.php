@@ -28,6 +28,7 @@ class SignFormFactory extends Nette\Object {
 	 */
 	public function create() {
 		$form = new Form;
+		$form->getElementPrototype()->class('ajax form');
 		$form->addText('username', 'Username:')
 			->setAttribute('class', 'form-control')
 			->setAttribute('placeholder', 'Nevyplněno ->pro test zadat: prcharom')
@@ -60,6 +61,9 @@ class SignFormFactory extends Nette\Object {
 			$userManager->login($values->username, $values->password);
 		} catch (Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());
+		}
+		if($form->getPresenter()->isAjax()) {
+			$form->getPresenter()->redrawControl('sign');
 		}
 	}
 

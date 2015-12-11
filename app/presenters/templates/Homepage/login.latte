@@ -1,18 +1,11 @@
-<!DOCTYPE HTML>
-<html>
-
-<head>
-    <meta charset="utf-8">
-    <!--- <script src="assets/js/main_page/login.js" type="text/javascript"></script> -->
-    <link href="css/login.css" rel="stylesheet">
-</head>
-
-<body>
+{layout "../@layout-modal.latte"}
+{block content}
   <!--- modal-header, modal-body a modal-footer tvori strukturu PopUpu pomoci bootstrap  -->
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
 	  <h4 class="modal-title"><b style="font-size:2em">přihlášení</b></h4>
 	</div>
+    {snippet sign}
     {form sign}
         <div class="modal-body">
             <!-- vykreslení chyb -->
@@ -36,5 +29,5 @@
             {input send}<!-- akce po stisknutí tlačítka v SignFormFactory.php-->
         </div>
     {/form}
-</body>
-</html>
+    {/snippet}
+{/block}
