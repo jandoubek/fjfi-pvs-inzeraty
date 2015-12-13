@@ -27,18 +27,19 @@
 <!--- modal-header, modal-body a modal-footer tvori strukturu PopUpu pomoci bootstrap -->
   <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      {if $user_id == $autor_id}
+      {if $user->id == $autor_id}
         <div class="input-group col-xs-10">
           <span class="input-group-addon" id="nazev_inzeratu" style="width: 12em"><b>Název inzerátu:</b></span>
           <input type="text" class="form-control" placeholder="Vyplňte prosím"  value="{$inzerat['title']}">
         </div>
       {else}
-        <b> {$inzerat['title']} </b>
+        <b><h3>{$inzerat['title']}<br> </h3></b>
+        Publikoval: <b> {$autor_nickname}  </b>
       {/if}
   </div>
 
   <div class="modal-body">
-    {if $user_id == $autor_id}
+    {if $user->id == $autor_id}
       <label>Vyberte kategorii:</label>
        <select class="form-control">
         <option>Elektronika</option>
@@ -104,7 +105,7 @@
 
     <br>
     <br>
-    {if $user_id == $autor_id}
+    {if $user->id == $autor_id}
       <div class="form-group">
         <label for="vlozObr">Vložit obrázek do galerie</label>
         <input type="file" id="vlozObr">
@@ -114,7 +115,7 @@
     {/if}
 
       <label for="popis">Popis</label>
-      <textarea {if $user_id != $autor_id} readonly {/if} class="form-control" rows="auto" style="color: black; background-color: white">
+      <textarea {if $user->id != $autor_id} readonly {/if} class="form-control" rows="auto" style="color: black; background-color: white">
 {$inzerat->body}
       </textarea>
 

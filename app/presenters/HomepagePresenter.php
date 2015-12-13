@@ -140,18 +140,23 @@ class HomepagePresenter extends BasePresenter {
 
 	public function renderInzerat($id = NULL) {
 
-		$this->template->inzerat = $this->database->findById('poster', 1);
+		//if ($id == 0){ //Pokud us ID inzeratu = 0 => Nový inzerát
 
-		if(!$this->template->inzerat) {
-			$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
-			$this->redirect('Homepage:default');
-		}
+		//}
+		//else{ // Prohlizeni/editace nového inzerátu
+			$this->template->inzerat = $this->database->findById('poster', 1); //$id misto 0
 
-		$this->template->user_id = 0;
-		$this->template->autor_id = $this->template->inzerat->id_user;
+			if(!$this->template->inzerat) {
+				$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
+				$this->redirect('Homepage:default');
+			}
 
-		$this->template->comments = $this->database->find('komenty', 'id_poster', 1);
+			$this->template->autor_id = $this->template->inzerat->id_user;
 
+			$this->template->autor_nickname = $this->database->findById('user', $this->template->inzerat->id_user)->nickname;
+
+			$this->template->comments = $this->database->find('komenty', 'id_poster', 1);
+		//}
 	}
 
 
