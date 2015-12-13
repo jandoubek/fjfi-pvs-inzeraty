@@ -97,8 +97,8 @@
         <div class="row">
         <!-- vypis jednotlivych inzeratu -->
             {foreach $inzeraty as $mini_inzerat}
-            <a data-toggle="modal" href="homepage/inzerat" data-target="#inzerat_modal">
                 <div class="thumbnail inzerat_miniatura {$mini_inzerat['class']}">
+                    <a data-toggle="modal" href="homepage/inzerat" data-target="#inzerat_modal" style="padding: 0;">
                     {if $mini_inzerat['pictures'] != null}
                         <div class="caption">
                             <h4 class="pull-right">{$mini_inzerat['prize']}</h4>
@@ -115,8 +115,8 @@
                             <div class="mini_body">{$mini_inzerat[body]}</div>
                         </div>
                     {/if}
+                    </a>
                 </div>
-            </a>
             {/foreach}
         </div>
         <hr>
