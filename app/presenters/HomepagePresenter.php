@@ -12,6 +12,7 @@ use App\Forms\SignFormFactory;
 use App\Forms\RegisterFormFactory;
 use App\Forms\CommentFormFactory;
 use App\Forms\ProfileFormFactory;
+use App\Forms\InzeratFormFactory;
 
 
 class HomepagePresenter extends BasePresenter {
@@ -27,6 +28,9 @@ class HomepagePresenter extends BasePresenter {
 
 		/** @var CommentFormFactory @inject */
 		public $factory4;
+
+		/** @var InzeratFormFactory @inject */
+		public $inzerat_factory;
 
 		/** @var Model\Database */
 		private $database;
@@ -138,25 +142,28 @@ class HomepagePresenter extends BasePresenter {
 	}
 
 
-	public function renderInzerat($id = NULL) {
-
-		//if ($id == 0){ //Pokud us ID inzeratu = 0 => Nový inzerát
-
-		//}
-		//else{ // Prohlizeni/editace nového inzerátu
+	public function renderInzerat($id = NULL, $user_id = NULL) {
+		if($id == 0){ // nový inzerát
+			$inzerat = (object)array(
+				'id' => $id,
+				'header' => '',
+				'prize' => '',
+				'category' => 1,
+				'body' => '',
+				'id_user' => $user_id,
+			);
+			$this->template->inzerat = $inzerat;
+		}
+		else{ // prohlizeni/ editace inzeratu
 			$this->template->inzerat = $this->database->findById('poster', 1); //$id misto 0
-
 			if(!$this->template->inzerat) {
 				$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
 				$this->redirect('Homepage:default');
 			}
-
 			$this->template->autor_id = $this->template->inzerat->id_user;
-
 			$this->template->autor_nickname = $this->database->findById('user', $this->template->inzerat->id_user)->nickname;
-
 			$this->template->comments = $this->database->find('komenty', 'id_poster', 1);
-		//}
+		}
 	}
 
 
@@ -208,6 +215,15 @@ class HomepagePresenter extends BasePresenter {
 			$this->redirect('Homepage:default');
 		};
         return $form;
+	}
+
+	protected function createComponentInzerat(){
+		$form = $this->inzerat_factory->create();
+    $form->onSuccess[] = function ($form) {
+			$this->flashMessage('Váš inzerát byl založen.');
+			$this->redirect('Homepage:default');
+		};
+    return $form;
 	}
 
 }

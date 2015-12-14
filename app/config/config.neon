@@ -25,5 +25,6 @@ services:
 	- App\Forms\RegisterFormFactory
 	- App\Forms\CommentFormFactory
 	- App\Forms\ProfileFormFactory
+	- App\Forms\InzeratFormFactory
 
 	router: App\RouterFactory::createRouter

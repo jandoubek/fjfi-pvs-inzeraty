@@ -62,7 +62,7 @@
                     </li>-->
                     {if ($user->loggedIn)}
                         <li>
-                            <a data-toggle="modal" href="homepage/inzerat"  data-target="#inzerat_modal">Nový inzerát</a>
+                            <a data-toggle="modal" n:href="Homepage:inzerat, 0, $user->id"  data-target="#inzerat_modal">Nový inzerát</a>
                         </li>
 
                         <li>
