@@ -41,13 +41,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#" style="color: white"> eNástěnka</a>
+                <a class="navbar-brand"  n:href="Homepage:default, 0" style="color: white"> eNástěnka</a>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left navbar_menu">
-                    {foreach $kategorie as $kategorietest}
-                    <li><a style="color: #{$kategorietest->barva}" href="#"> {$kategorietest->nazev} </a></li>
+                    {foreach $kategorie as $kategorie_i}
+                    <li><a style="color: #{$kategorie_i->barva}" n:href="Homepage:default, $kategorie_i->id"> {$kategorie_i->nazev} </a></li>
                     {/foreach}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -100,6 +100,7 @@
         <div class="row">
         <!-- vypis jednotlivych inzeratu -->
             {foreach $inzeraty as $mini_inzerat}
+            {if ($idkat==$mini_inzerat->id_kategorie or $idkat==0)}
                 <div class="thumbnail inzerat_miniatura kat{$mini_inzerat->id_kategorie}">
                     <a data-toggle="modal" n:href="Homepage:inzerat, $mini_inzerat->id, $user->id" data-target="#inzerat_modal" style="padding: 0; outline: none;">
                     {if false} <!--  $mini_inzerat->pictures != null -->
@@ -120,6 +121,7 @@
                     {/if}
                     </a>
                 </div>
+            {/if}
             {/foreach}
         </div>
         <hr>
