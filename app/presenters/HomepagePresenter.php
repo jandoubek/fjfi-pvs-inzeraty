@@ -44,6 +44,7 @@ class HomepagePresenter extends BasePresenter {
 	/* --- --- RENDER METODY PRESENTERU --- --- */
 	public function renderDefault() {
 		$this->template->inzeraty = $this->database->findAll('poster');
+		$this->template->kategorie = $this->database->findAll('kategorie');
 
 		$this->template->dbUser = $this->database->findById('user', 1);
 		// vytvorim objekt pomoci me modelove tridy v app/model

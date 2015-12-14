@@ -44,25 +44,25 @@ body {
 }
 
 .row {text-align: center;}
-.inzerat_miniatura{ display: inline-block; margin: 0.6em; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); border: none; height: 260px; width: 240px; text-align: left;}
+.inzerat_miniatura{ float: left; margin: 0.6em; box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.7); border: none; height: 260px; width: 240px; text-align: left;}
 .inzerat_miniatura .caption{ height: 100%; }
 .inzerat_miniatura .caption .mini_body{ color: #161616;}
 .inzerat_miniatura .truncate{ height: 30%; }
 .inzerat_miniatura img{ max-height: 100px; width: auto; margin-left: auto; margin-right: auto; margin-top: 1.2em;}
 
-.elektronika {
+.kat1 {
     background-color: #e53e1b;
 }
 
-.akce {
+.kat2 {
     background-color: #2b5bc6;
 }
 
-.jidlo {
+.kat3 {
     background-color: #f7e325;
 }
 
-.jine {
+.kat4 {
     background-color: #9CCF31;
 }
 

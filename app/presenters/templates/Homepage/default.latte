@@ -46,10 +46,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left navbar_menu">
-                    <li><a style="color: #e53e1b" href="#"> Elektronika </a></li>
-                    <li><a style="color: #2b5bb5 " href="#"> Společenské akce </a></li>
-                    <li><a style="color: #f7da20" href="#"> Jídlo </a></li>
-                    <li><a style="color: #9CCF31" href="#"> Jiné </a></li>
+                    {foreach $kategorie as $kategorietest}
+                    <li><a style="color: #{$kategorietest->barva}" href="#"> {$kategorietest->nazev} </a></li>
+                    {/foreach}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <!--<li>
@@ -101,7 +100,7 @@
         <div class="row">
         <!-- vypis jednotlivych inzeratu -->
             {foreach $inzeraty as $mini_inzerat}
-                <div class="thumbnail inzerat_miniatura jine">
+                <div class="thumbnail inzerat_miniatura kat{$mini_inzerat->id_kategorie}">
                     <a data-toggle="modal" href="homepage/inzerat" data-target="#inzerat_modal" style="padding: 0; outline: none;">
                     {if false} <!--  $mini_inzerat->pictures != null -->
                         <div class="caption">
