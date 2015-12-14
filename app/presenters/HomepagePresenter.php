@@ -43,72 +43,7 @@ class HomepagePresenter extends BasePresenter {
 
 	/* --- --- RENDER METODY PRESENTERU --- --- */
 	public function renderDefault() {
-		/* staticka data z DB */
-		$this->template->inzeraty = array(
-			1 => array( // ID inzeratu
-				'class' => 'elektronika',
-				'header' => 'Pocitac',
-				'body' => 'Muj stary pocitac ke koupi. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu.',
-				'prize' => 250,
-				'pictures' => 'pocitac.jpg',
-				),
-			2 => array(
-				'class' =>'akce',
-				'header' => 'Godot',
-				'body' => 'Mam volny listek do divadla, kdo se prida? Ctvrtek 19:00. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. Priklad dlouheho textu. ',
-				'prize' => 500,
-				'pictures' => '',
-				),
-			3 => array(
-				'class' =>'akce',
-				'header' => 'Koncert',
-				'body' => 'Koncert...',
-				'prize' => 250,
-				'pictures' => 'koncert.jpg',
-				),
-			4 => array(
-				'class' =>'jidlo',
-				'header' => 'Burger Night',
-				'body' => 'Delam burgery, pojdte se pridat.',
-				'prize' => 0,
-				'pictures' => 'burger.jpg',
-				),
-			5 => array(
-				'class' =>'elektronika',
-				'header' => 'Pocitac',
-				'body' => 'Muj stary pocitac ke koupi',
-				'prize' => 245,
-				'pictures' => 'pocitac.jpg',
-				),
-			6 => array(
-				'class' =>'jidlo',
-				'header' => 'Burger Night',
-				'body' => 'Delam burgery, pojdte se pridat.',
-				'prize' => 0,
-				'pictures' => 'burger.jpg',
-				),
-			7 => array(
-				'class' =>'jine',
-				'header' => 'Hledam douco',
-				'body' => 'Potrebuji se doucit matematiku, umi nekdo zlomky?',
-				'prize' => 200,
-				'pictures' => 'koncert.jpg',
-				),
-			8 => array(
-				'class' =>'jidlo',
-				'header' => 'Burger Night',
-				'body' => 'Delam burgery, pojdte se pridat.',
-				'prize' => 0,
-				'pictures' => 'burger.jpg',
-				),
-			9 => array(
-				'class' =>'jine',
-				'header' => 'Hledam douco',
-				'body' => 'Potrebuji se doucit matematiku, umi nekdo zlomky?',
-				'prize' => 200,
-				'pictures' => 'koncert.jpg',
-				),
-			);
+		$this->template->inzeraty = $this->database->findAll('poster');
 
 		$this->template->dbUser = $this->database->findById('user', 1);
 		// vytvorim objekt pomoci me modelove tridy v app/model
