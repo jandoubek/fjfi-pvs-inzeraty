@@ -61,9 +61,14 @@ class UserManager {
    		'nickname' => $nick,
    	  'password' =>  $this->generateHash($password),
 					));
+			//pro přihlášení po registraci:
+			$row = $this->database->table('user')->where('nickname', $nick)->fetch();
+			$arr = $row->toArray();
+			$this->user->login(new Security\Identity($row->id, null, $arr));
 			}
 
 		}
+
 	}
 
 	/**
