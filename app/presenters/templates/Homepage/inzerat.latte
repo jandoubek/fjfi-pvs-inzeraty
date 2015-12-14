@@ -29,7 +29,7 @@
 
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
-      {if $user->id == $autor_id || $autor_id == 0}
+      {if $user->id == $autor_id || $autor_id == 0}  
         <div class="input-group col-xs-10">
           <span class="input-group-addon" id="nazev_inzeratu" style="width: 12em"><b>Název inzerátu:</b></span>
           <input type="text" class="form-control" name="inzerat_nazev_input" placeholder="Vyplňte prosím"  value="{$inzerat->title}">
@@ -43,7 +43,7 @@
   <div class="modal-body">
     {if $user->id == $autor_id || $autor_id == 0}
       <label>Vyberte kategorii:</label>
-       <select class="form-control">
+       <select class="form-control" name="inzerat_kategorie_input">
         <option>Elektronika</option>
          <option>Společenské akce</option>
          <option>Jídlo</option>
@@ -155,9 +155,7 @@
   </div> <!-- modal-body -->
 
   <div class="modal-footer">
-    {if $autor_id != 0}
       {input send}
-    {/if}
   </div>
 
 {/form}

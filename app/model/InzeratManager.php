@@ -25,4 +25,8 @@ class InzeratManager {
   	$this->database->query('INSERT INTO poster', $this->inzerat);
   }
 
+  public function uloz_inzerat(){
+    $this->database->query('UPDATE poster', $this->inzerat);
+  }
+
 }
