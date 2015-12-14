@@ -40,8 +40,9 @@ class InzeratFormFactory extends Nette\Object {
 
 		//$form->addSelect('category') // kategorie nejsou pridany do DB
 
-		$form->addSubmit('send', 'Založit inzerát')
+		$form->addSubmit('send', 'Uložit inzerát')
 		->setAttribute('class', 'btn btn-primary');
+
 
 		//$form->setDefaults(); // nastavit (array)inzerat z DB ..ale jen pouze header, prize a body
 
