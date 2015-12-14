@@ -29,19 +29,19 @@
 
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
-    {if $user->id == $inzerat->id_user}
-      <div class="input-group col-xs-10">
-        <span class="input-group-addon" id="nazev_inzeratu" style="width: 12em"><b>Název inzerátu</b></span>
-        {input title}
-      </div>
-    {else}
-      <b><h3>{$inzerat['title']}<br> </h3></b>
-      Publikoval: <b> {$autor_nickname}  </b>
-    {/if}
+      {if $user->id == $autor_id || $autor_id == 0}
+        <div class="input-group col-xs-10">
+          <span class="input-group-addon" id="nazev_inzeratu" style="width: 12em"><b>Název inzerátu:</b></span>
+          <input type="text" class="form-control" name="inzerat_nazev_input" placeholder="Vyplňte prosím"  value="{$inzerat->title}">
+        </div>
+      {else}
+        <b><h3>{$inzerat->title}<br> </h3></b>
+        Publikoval: <b>{$autor_nickname}</b>
+      {/if}
   </div>
 
   <div class="modal-body">
-    {if $user->id == $inzerat->id_user && false}
+    {if $user->id == $autor_id || $autor_id == 0}
       <label>Vyberte kategorii:</label>
        <select class="form-control">
         <option>Elektronika</option>
@@ -51,7 +51,7 @@
       </select>
     {/if}
 
-  {if $user->id == $inzerat->id_user}
+  {if $user->id == $inzerat->id_user || $autor_id == 0}
     <!-- pak pridat editovatelnou galerii -->
   {else}
     <h4> <b>Galerie</b> </h4>
@@ -127,10 +127,13 @@
 
   <div class="input-group">
         <span class="input-group-addon" id="cena" style="width: 7em"><b>Cena</b></span>
-        {if $inzerat->id == 0 || $user->id == $inzerat->id_user}
-          {input value}
-        <!--<input readonly type="text" class="form-control" placeholder="{$inzerat->prize}" aria-describedby="cena" id="cena_input" style="color: black; background-color: white">-->
-        {/if}
+          {if ($user->id == $autor_id)}
+            <input type="text" class="form-control" name="inzerat_cena_input" value="{$inzerat->value}" aria-describedby="cena" id="cena_input" style="color: black; background-color: white">
+          {elseif ($autor_id == 0)}
+            <input type="text" class="form-control" name="inzerat_cena_input" aria-describedby="cena" id="cena_input" style="color: black; background-color: white">
+          {else}
+            <input readonly type="text" class="form-control" name="inzerat_cena_input" value="{$inzerat->value}" aria-describedby="cena" id="cena_input" style="color: black; background-color: white">
+          {/if}
   </div>
 
   {if $inzerat->id != 0}
@@ -149,15 +152,11 @@
         <h4> Přidat komentář</h4>
         {control comment}
   {/if}
-
   </div> <!-- modal-body -->
 
   <div class="modal-footer">
-    {if $inzerat->id == 0}
+    {if $autor_id != 0}
       {input send}
-    {else}
-      <button type="button" class="btn btn-default" data-dismiss="modal" id="inzerat_save_and_close">Uložit a zavřít</button>
-      <button type="button" class="btn btn-default" data-dismiss="modal">Zavřít</button>
     {/if}
   </div>
 
