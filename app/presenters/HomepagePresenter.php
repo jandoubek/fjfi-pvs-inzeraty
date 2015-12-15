@@ -66,6 +66,8 @@ class HomepagePresenter extends BasePresenter {
 		$this->template->prihlasen = $prihlasen;
 
 		$this->template->profile = $profile;
+
+		$this->template->pictures = $this->database->findAll('image');
 	}
 
 	public function renderProfile($id = null) {
@@ -106,7 +108,7 @@ class HomepagePresenter extends BasePresenter {
 			}
 			$this->template->autor_id = $this->template->inzerat->id_user;
 			$this->template->autor_nickname = $this->database->findById('user', $this->template->inzerat->id_user)->nickname;
-			$this->template->comments = $this->database->find('komenty', 'id_poster', 1);
+			$this->template->comments = $this->database->find('komenty', 'id_poster', $id);
 		}
 	}
 
