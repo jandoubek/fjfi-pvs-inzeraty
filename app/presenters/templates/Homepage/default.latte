@@ -107,9 +107,9 @@
                     <a data-toggle="modal" n:href="Homepage:inzerat, $mini_inzerat->id, $user->id" data-target="#inzerat_modal" style="padding: 0; outline: none;">
                     {if true} <!--  $mini_inzerat->pictures != null -->
                         <div class="caption">
-                            <h4 class="pull-right">{$mini_inzerat->value}</h4>
-                            <h4>{$mini_inzerat->title}</h4>
-                            <div class="truncate mini_body">{$mini_inzerat->body}</div>
+                            <h4 class="pull-right">{$mini_inzerat->value|truncate:12}</h4>
+                            <h4>{$mini_inzerat->title|truncate:20}</h4>
+                            <div class="mini_body" style="height: 30%;">{$mini_inzerat->body|truncate:80}</div>
 
                         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
@@ -130,9 +130,9 @@
                         </div>
                     {else}
                         <div class="caption mini_body">
-                            <h4 class="pull-right">{$mini_inzerat->value}</h4>
-                            <h4>{$mini_inzerat->title}</h4>
-                            <div class="mini_body">{$mini_inzerat->body}</div>
+                            <h4 class="pull-right">{$mini_inzerat->value|truncate:12}</h4>
+                            <h4>{$mini_inzerat->title|truncate:20}</h4>
+                            <div class="mini_body">{$mini_inzerat->body|truncate:250}</div>
                         </div>
                     {/if}
                     </a>
