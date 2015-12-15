@@ -91,7 +91,8 @@
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header" style="text-align: center">Nejnovější příspěvky
+
+                <h1 class="page-header" style="text-align: center">{if ($vybranakat==null)}Nejnovější příspěvky{else}{$vybranakat->nazev}{/if}
                 </h1>
             </div>
         </div>
@@ -100,7 +101,7 @@
         <div class="row">
         <!-- vypis jednotlivych inzeratu -->
             {foreach $inzeraty as $mini_inzerat}
-            {if ($idkat==$mini_inzerat->id_kategorie or $idkat==0)}
+            {if ($vybranakat==null or $vybranakat->id==$mini_inzerat->id_kategorie)}
                 <div class="thumbnail inzerat_miniatura kat{$mini_inzerat->id_kategorie}">
                     <a data-toggle="modal" n:href="Homepage:inzerat, $mini_inzerat->id, $user->id" data-target="#inzerat_modal" style="padding: 0; outline: none;">
                     {if false} <!--  $mini_inzerat->pictures != null -->

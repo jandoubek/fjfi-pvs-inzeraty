@@ -45,7 +45,7 @@ class HomepagePresenter extends BasePresenter {
 	public function renderDefault($idkat = 0) {
 		$this->template->inzeraty = $this->database->findAll('poster');
 		$this->template->kategorie = $this->database->findAll('kategorie');
-		$this->template->idkat=$idkat;
+		$this->template->vybranakat = $this->database->findById('kategorie',$idkat);
 		$this->template->dbUser = $this->database->findById('user', 1);
 		// vytvorim objekt pomoci me modelove tridy v app/model
 		$mujZooObjekt = new Model\TestModelClass;
