@@ -28,6 +28,7 @@ class RegisterFormFactory extends Nette\Object {
 	 */
 	public function create() {
 		$form = new Form;
+		$form->getElementPrototype()->class('ajax form');
 		$form->addText('username', 'Username:')
 			->setAttribute('class', 'form-control')
 			->setAttribute('placeholder', 'Nevyplněno')
@@ -65,6 +66,9 @@ class RegisterFormFactory extends Nette\Object {
 			$userManager->register($values->username, $values->password, $values->repassword);
 		} catch (Nette\Security\AuthenticationException $e) {
 			$form->addError($e->getMessage());
+		}
+		if($form->getPresenter()->isAjax()) {
+			$form->getPresenter()->redrawControl('register');
 		}
 	}
 
