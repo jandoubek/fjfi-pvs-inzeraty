@@ -101,7 +101,7 @@ class HomepagePresenter extends BasePresenter {
 		}
 		else{ // prohlizeni/ editace inzeratu
 			$this->template->inzerat = $this->database->findById('poster', $id); //$id misto 0
-			$this->template->inzeratName = $this->database->findById('poster', $id)->title;
+			$this->template->nazevKategorie = $this->database->findById('kategorie', $this->template->inzerat->id_kategorie)->nazev;
 			if(!$this->template->inzerat) {
 				$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
 				$this->redirect('Homepage:default');
