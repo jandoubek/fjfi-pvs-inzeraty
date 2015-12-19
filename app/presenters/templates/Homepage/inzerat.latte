@@ -31,8 +31,8 @@
     <button type="button" class="close" data-dismiss="modal">&times;</button>
       {if $user->id == $autor_id || $autor_id == 0}  
         <div class="input-group col-xs-10">
-          <span class="input-group-addon" id="nazev_inzeratu" style="width: 12em"><b>Název inzerátu:</b></span>
-          <input type="text" class="form-control" name="inzerat_nazev_input" placeholder="Vyplňte prosím"  value="{$inzerat->title}">
+          <b>Název inzerátu:<br> </b>
+          {input title}
         </div>
       {else}
         <b><h3>{$inzerat->title}<br> </h3></b>
@@ -42,13 +42,7 @@
 
   <div class="modal-body">
     {if $user->id == $autor_id || $autor_id == 0}
-      <label>Vyberte kategorii:</label>
-       <select class="form-control" name="inzerat_kategorie_input">
-        <option>Elektronika</option>
-         <option>Společenské akce</option>
-         <option>Jídlo</option>
-        <option>Jiné</option>
-      </select>
+      {input kategorie}
     {/if}
 
   {if $user->id == $inzerat->id_user || $autor_id == 0}
@@ -109,31 +103,16 @@
     <br>
   {/if}
 
-  {if $user->id == $inzerat->id_user}
-    <div class="form-group">
-      <label for="vlozObr">Vložit obrázek do galerie</label>
-      <input type="file" id="vlozObr">
-      <br>
-      <button type="submit" class="btn btn-default">Vložit</button>
-    </div>
-  {/if}
-
-  <label for="popis">Popis</label>
   {if $inzerat->id == 0 || $user->id == $inzerat->id_user}
-    {input body}
+    <label for="popis">Popis</label>
+          {input body}
     <!--<textarea class="form-control" rows="auto" style="color: black; background-color: white">  </textarea>-->
   {/if}
   <br>
 
   <div class="input-group">
         <span class="input-group-addon" id="cena" style="width: 7em"><b>Cena</b></span>
-          {if ($user->id == $autor_id)}
-            <input type="text" class="form-control" name="inzerat_cena_input" value="{$inzerat->value}" aria-describedby="cena" id="cena_input" style="color: black; background-color: white">
-          {elseif ($autor_id == 0)}
-            <input type="text" class="form-control" name="inzerat_cena_input" aria-describedby="cena" id="cena_input" style="color: black; background-color: white">
-          {else}
-            <input readonly type="text" class="form-control" name="inzerat_cena_input" value="{$inzerat->value}" aria-describedby="cena" id="cena_input" style="color: black; background-color: white">
-          {/if}
+         {input value}     
   </div>
 
   {if $inzerat->id != 0}
@@ -157,7 +136,6 @@
   <div class="modal-footer">
       {input send}
   </div>
-
 {/form}
 </body>
 

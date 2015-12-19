@@ -9,14 +9,15 @@ use Nette\Security\User;
 
 
 class InzeratFormFactory extends Nette\Object {
-
-		/** @var Inzerat */
-		private $inzerat;
+		/** @var User */
+		private $user;
 
 		/** @var Nette\Database\Context */
 		private $database;
 
-	public function __construct(Nette\Database\Context $database) {
+
+	public function __construct(User $user, Nette\Database\Context $database) {
+		$this->user = $user;
 		$this->database = $database;
 	}
 
@@ -25,10 +26,24 @@ class InzeratFormFactory extends Nette\Object {
 	 */
 	public function create() {
 		$form = new Form;
-		$form->addText('title', 'Nadpis:')
+
+		$form->addText('title', 'Název inzerátu:')
 			->setAttribute('class', 'form-control')
 			->setAttribute('placeholder', 'Nevyplněno')
 			->setRequired('Vyplňte prosím nadpis inzerátu.');
+
+
+		//$form->addSelect('kat', 'Vyber kategorii:', (array)$this->database->findAll('kategorie')->nazev)
+		//	->setPrompt('Pick a country');
+		$kategorie = array(
+		    '1' => 'Elektronika',
+		    '2' => 'Akce',
+		    '3'  => 'Jidlo',
+		    '4'  => 'Jine',
+		);		
+		$form->addSelect('kategorie', 'Vyberte kategorii:', $kategorie);
+
+
 
 		$form->addTextArea('body', 'Popis:')
 			->setAttribute('class', 'form-control')
@@ -38,13 +53,9 @@ class InzeratFormFactory extends Nette\Object {
 			->setAttribute('class', 'form-control')
 			->setAttribute('placeholder', 'Nevyplněno');
 
-		//$form->addSelect('category') // kategorie nejsou pridany do DB
 
 		$form->addSubmit('send', 'Uložit inzerát')
 		->setAttribute('class', 'btn btn-primary');
-
-
-		//$form->setDefaults(); // nastavit (array)inzerat z DB ..ale jen pouze header, prize a body
 
 		$form->onSuccess[] = array($this, 'save_inzerat');
 		return $form;
@@ -52,7 +63,7 @@ class InzeratFormFactory extends Nette\Object {
 
 	public function save_inzerat(Form $form, $values) {
 		$values = (array)$values;
-		$values['id_user'] = 1;
+		$values['id_user'] = $this->user->id;
 		$inzeratManager = new Model\InzeratManager($values, $this->database);
 		$inzeratManager->zaloz_inzerat();
 	}
