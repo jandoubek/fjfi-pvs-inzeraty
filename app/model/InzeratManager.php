@@ -24,7 +24,7 @@ class InzeratManager {
   public function zaloz_inzerat(){
   $this->database->query('INSERT INTO poster', array(
       'id_user' => $this->inzerat['id_user'],
-      'id_kategorie' =>  $this->inzerat['kategorie'],
+      'id_kategorie' =>  $this->inzerat['id_kategorie'],
       'body' =>  $this->inzerat['body'],
       'title' => $this->inzerat['title'],
       'value' => $this->inzerat['value'],
@@ -33,14 +33,10 @@ class InzeratManager {
     ));
   }
 
-  public function uloz_inzerat(){
-    $this->database->query('UPDATE poster', array(
-      'id_kategorie' =>  $this->inzerat['kategorie'],
-      'body' =>  $this->inzerat['body'],
-      'title' => $this->inzerat['title'],
-      'value' => $this->inzerat['value'],
-      'expire' =>  date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 365 day")), //Expiration period 1 year by default, the 'added' property does not change
-    ));
+  public function uloz_inzerat($id){
+    $this->inzerat['expire'] = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 365 day"));
+    unset($this->inzerat['bodyEdit']);
+    $this->database->table('poster')->get($id)->update($this->inzerat);
   }
 
 }

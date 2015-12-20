@@ -82,6 +82,9 @@ class HomepagePresenter extends BasePresenter {
 
 	public function renderInzerat($id = NULL, $user_id = NULL) {
 
+		// priprava pro praci s formularem
+		$form = $this['inzerat'];
+
 		if($id == 0){ // nový inzerát
 			$inzerat = (object)array(
 				'id' => 0,
@@ -94,20 +97,31 @@ class HomepagePresenter extends BasePresenter {
 				'value' => ''
 			);
 
+			$form['id_inzerat']->value = $id; // novy inzerat ($id == 0) 
 			$this->template->inzerat = $inzerat;
 			$this->template->autor_id = 0;
 			$this->template->autor_nickname = NULL;
 			$this->template->comments = NULL;
 		}
 		else{ // prohlizeni/ editace inzeratu
+
 			$this->template->inzerat = $this->database->findById('poster', $id); //$id misto 0
-			$this->template->nazevKategorie = $this->database->findById('kategorie', $this->template->inzerat->id_kategorie)->nazev;
 			if(!$this->template->inzerat) {
 				$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
 				$this->redirect('Homepage:default');
 			}
+
+			// jedna se o editaci, nahraji tedy do formu data editovaneho inzeratu
+			$form['id_inzerat']->value = $id;
+			$form->setDefaults($this->template->inzerat);
+			
+			// (1) $this->template->nazevKategorie = $this->database->findById('kategorie', $this->template->inzerat->id_kategorie)->nazev; <- fuj (Roman)
+			$this->template->nazevKategorie = $this->template->inzerat->kategorie->nazev; // lepsi verze zapisu nahore, vyuziti elegance FK a ORM db
 			$this->template->autor_id = $this->template->inzerat->id_user;
-			$this->template->autor_nickname = $this->database->findById('user', $this->template->inzerat->id_user)->nickname;
+			// (2) $this->template->autor_nickname = $this->database->findById('user', $this->template->inzerat->id_user)->nickname;
+			$this->template->autor_nickname = $this->template->inzerat->user->nickname; 
+			// 1 a 2 netreba ukladat zvlast do promennych, v template k nim lze pristupovat stejne jako jsem naznacil u obou promennych o radek nize 
+			
 			$this->template->comments = $this->database->find('komenty', 'id_poster', $id);
 		}
 	}
@@ -165,7 +179,7 @@ class HomepagePresenter extends BasePresenter {
 
 	protected function createComponentInzerat(){
 		$form = $this->inzerat_factory->create();
-    $form->onSuccess[] = function ($form) {
+    	$form->onSuccess[] = function ($form) {
 			$this->flashMessage('Váš inzerát byl založen.');
 			$this->redirect('Homepage:default');
 		};
