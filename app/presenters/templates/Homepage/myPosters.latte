@@ -1,0 +1,65 @@
+{layout "../@layout-modal.latte"}
+
+{block content}
+  <!--- modal-header, modal-body a modal-footer tvori strukturu PopUpu pomoci bootstrap  -->
+	<div class="modal-header">
+		<button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 class="modal-title">Moje inzeráty</h4>
+	</div>
+    {snippet myposters}
+        <div class="modal-body">
+
+            <div id="active-posters">
+
+                <h5>Aktivní inzeráty</h5>
+                {if}
+                    <table class="posters">
+                    {foreach $activePosters as $ap}
+                        <tr>
+                            <td class="col-xs-6">{$ap->title}</td>
+                            <td class="col-xs-3">{$ap->expire|date: 'd.m.Y H:i'}</td>
+                            <td class="col-xs-3"><a n:href="deactivateMyPoster! $ap->id" class="ajax btn btn-primary">Deaktivovat</a></td>
+                        </tr>
+                    {/foreach}
+                    </table>
+                {else}
+                    <p>Nemáte, žádné aktivní inzeráty.</p>
+                {/if isset($ap)}
+            
+            </div>
+            <div id="inactive-posters">
+
+                <h5>Neaktivní inzeráty</h5>
+                {if}
+                    <table class="posters">
+                    {foreach $inactivePosters as $ip}
+                        <tr>
+                            <td class="col-xs-6">{$ip->title}</td>
+                            <td class="col-xs-3">{$ip->expire|date: 'd.m.Y H:i'}</td>
+                            <td class="col-xs-3"><a n:href="activateMyPoster! $ip->id" class="ajax btn btn-primary">Aktivovat</a></td>
+                        </tr>
+                    {/foreach}
+                    </table>
+                {else}
+                    <p>Nemáte, žádné neaktivní inzeráty.</p>
+                {/if isset($ip)}
+
+            </div>
+        </div>
+    {/snippet}
+        <div class="modal-footer">
+            <a n:href="Homepage:default" class="btn btn-primary">Načíst změny</a>
+        </div>
+{/block}
+
+{block head}
+<style>
+    h4.modal-title { font-size: 1.6em;}
+    h5 { font-size: 1.2em; color: darkblue;}
+    table.posters { width: 96%; margin: 0.5em 2%; }
+    table.posters tr:nth-child(2n+1) td { background: #EEE;}
+    table.posters tr:hover td { background: lightyellow;} 
+    table.posters tr td:first-child { border-top-left-radius: 4px; border-bottom-left-radius: 4px;}
+    table.posters tr td:last-child { border-top-right-radius: 4px; border-bottom-right-radius: 4px; text-align: center;}
+</style>
+{/block}

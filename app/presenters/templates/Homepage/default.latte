@@ -64,7 +64,9 @@
                         <li>
                             <a data-toggle="modal" n:href="Homepage:inzerat, 0, $user->id"  data-target="#inzerat_modal">Nový inzerát</a>
                         </li>
-
+                        <li>
+                            <a data-toggle="modal" n:href="Homepage:myPosters" data-target="#myPosters_modal">Moje inzeráty</a>
+                        </li>
                         <li>
                             <a data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a>
                         </li>
@@ -253,6 +255,13 @@
   </div>
 </div>
 
+<!-- PopUp pomoci bootstrap, naplni se to myPosters.latte -->
+<div id="myPosters_modal" class="modal fade" role="dialog">
+  <div class="modal-dialog" style="width: 800px;">
+    <div class="modal-content">
+    </div>
+  </div>
+</div>
 
 <!-- PopUp pomoci bootstrap, naplni se to inzerat.latte -->
 <div id="inzerat_modal" class="modal fade" role="dialog">

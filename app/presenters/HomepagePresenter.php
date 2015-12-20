@@ -43,7 +43,7 @@ class HomepagePresenter extends BasePresenter {
 
 	/* --- --- RENDER METODY PRESENTERU --- --- */
 	public function renderDefault($idkat = 0) {
-		$this->template->inzeraty = $this->database->findAll('poster');
+		$this->template->inzeraty = $this->database->findAll('poster')->where('NOW() <= expire')->order('expire DESC');
 		$this->template->kategorie = $this->database->findAll('kategorie');
 		$this->template->vybranakat = $this->database->findById('kategorie',$idkat);
 		$this->template->dbUser = $this->database->findById('user', 1);
@@ -126,6 +126,35 @@ class HomepagePresenter extends BasePresenter {
 		}
 	}
 
+	// výpis inzerátů pro konkrétního uživatele
+	public function renderMyPosters() {
+		$this->template->activePosters = $this->database->findByUser('poster', $this->user->id)
+		->where('NOW() <= expire')->order('expire DESC');
+		$this->template->inactivePosters = $this->database->findByUser('poster', $this->user->id)
+		->where('NOW() > expire')->order('expire DESC');
+	}
+
+	public function handleDeactivateMyPoster($id) {
+        
+        $poster = $this->database->findById('poster', $id);
+        $data['expire'] = $poster->added; // nastavim mu datum vyprseni stejny jako datum pridani, coz inzerat presune do inaktivity
+        $poster->update($data);
+
+        if ($this->isAjax()) {
+            $this->redrawControl('myposters');
+        }
+    }
+
+    public function handleActivateMyPoster($id) {
+        
+        $poster = $this->database->findById('poster', $id);
+        $data['expire'] = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 30 day")); // pokud uzivatel bude chtit inzerat dodatecne prodlouzit tak, uz jen o mesic
+        $poster->update($data);
+
+        if ($this->isAjax()) {
+            $this->redrawControl('myposters');
+        }
+    }
 
 	/* --- --- ACTION METODY PRESENTERU --- --- */
 	public function actionLogout() {

@@ -34,7 +34,7 @@ class InzeratManager {
   }
 
   public function uloz_inzerat($id){
-    $this->inzerat['expire'] = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 365 day"));
+    $this->inzerat['expire'] = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 30 day"));
     unset($this->inzerat['bodyEdit']);
     $this->database->table('poster')->get($id)->update($this->inzerat);
   }
