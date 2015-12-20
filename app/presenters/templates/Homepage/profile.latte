@@ -3,14 +3,14 @@
 
 <head>
     <meta charset="utf-8">
-    <!--- <script src="assets/js/main_page/profile.js" type="text/javascript"></script> -->
+    <script src="assets/js/main_page/profile.js" type="text/javascript"></script>
     <link href="css/profile.css" rel="stylesheet">
 </head>
 
 <body>
   <!--- modal-header, modal-body a modal-footer tvori strukturu PopUpu pomoci bootstrap -->
 	<div class="modal-header">
-		<button type="button" class="close" data-dismiss="modal">&times;</button>
+		<button type="button" class="close" id="profile_close">&times;</button>
 	  <h4 class="modal-title"><b style="font-size:2em">{$profile->nickname}</b></h4>
 	</div>
 {form profile}

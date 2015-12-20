@@ -29,7 +29,7 @@
 
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal">&times;</button>
-      {if $user->id == $autor_id || $autor_id == 0}  
+      {if $user->id == $autor_id || $autor_id == 0}
         <div class="input-group col-xs-10">
           <b>Název inzerátu:<br> </b>
             {input title}
@@ -37,7 +37,7 @@
         </div>
       {else}
         <b><h3>{$inzerat->title}<br> </h3></b>
-        Publikoval: <b>{$autor_nickname}</b>
+        Publikoval: <b><a data-toggle="modal" n:href="Homepage:profile, $autor_id" data-target="#inzerat_profile_modal" style="padding: 0; outline: none;">{$autor_nickname}</a></b>
       {/if}
   </div>
 
@@ -133,7 +133,7 @@
               {input value}
           {else}
             <input readonly type="text" class="form-control" name="value" value="{$inzerat->value}"   style="color: black; background-color: white">
-          {/if} 
+          {/if}
   </div>
 
   <div style="display:none">
@@ -151,8 +151,8 @@
 {$komentar->body}
         </textarea>
     {/foreach}
-    <!-- pozor dva formulare v sobe se triskaj, je treba to nejak fixnout a to tak, že nejdriv je nutne uzavrit jeden form a 
-    po te druhy, nelze je vkladat do sebe (Roman) 
+    <!-- pozor dva formulare v sobe se triskaj, je treba to nejak fixnout a to tak, že nejdriv je nutne uzavrit jeden form a
+    po te druhy, nelze je vkladat do sebe (Roman)
         <br>
         <h4> Přidat komentář</h4>
         {*control comment*} -->
@@ -160,11 +160,20 @@
   </div> <!-- modal-body -->
 
   <div class="modal-footer">
-    {if $user->id == $autor_id || $autor_id == 0}  
+    {if $user->id == $autor_id || $autor_id == 0}
       {input send}
     {/if}
   </div>
 {/form}
+
+  <!-- PopUp pomoci bootstrap, naplni se to profile.latte -->
+  <div id="inzerat_profile_modal" class="modal fade" role="dialog">
+    <div class="modal-dialog" style="width: 600px;">
+      <div class="modal-content">
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>
