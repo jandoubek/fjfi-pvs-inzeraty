@@ -52,31 +52,12 @@ class HomepagePresenter extends BasePresenter {
 		// do promenne pro template nactu pole zvirat
 		$this->template->zviratka = $mujZooObjekt->vratPole();
 
-		//Zda je uzivatel prihlasen ci ne
-		if (empty($_POST["prihlasen"]))
-		{
-		$prihlasen = false;
-		} else
-		{
-		$prihlasen = true;
-		}
-		$profile = array(
-			'nickname' => 'pribyto');
-
 		if (($this->template->vybranakat==null) and ($idkat==10)) //kliknuto na Moje inzeráty
 		{
 		$this->template->vybranakat= (object) array(
 			'nazev' => 'Moje inzeráty',
-			'id' => 10);
-
-
-			//->nazev='Moje inzeráty';
-		//$this->template->vybranakat->id=10;
+			'id' => $idkat);
 		}
-
-		$this->template->prihlasen = $prihlasen;
-
-		$this->template->profile = $profile;
 
 		$this->template->pictures = $this->database->findAll('image');
 	}
