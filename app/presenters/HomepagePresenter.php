@@ -97,7 +97,7 @@ class HomepagePresenter extends BasePresenter {
 		}
 		else{ // prohlizeni/ editace inzeratu
 
-			$this->template->inzerat = $this->database->findById('poster', $id); //$id misto 0
+			$this->template->inzerat = $this->database->findById('poster', $id);
 			if(!$this->template->inzerat) {
 				$this->flashMessage('Je nám líto, ale hledaný inzerát v naší databázi není.');
 				$this->redirect('Homepage:default');
@@ -115,6 +115,8 @@ class HomepagePresenter extends BasePresenter {
 			// 1 a 2 netreba ukladat zvlast do promennych, v template k nim lze pristupovat stejne jako jsem naznacil u obou promennych o radek nize
 
 			$this->template->comments = $this->database->find('komenty', 'id_poster', $id);
+
+			$this->template->pictures = $this->database->find('image', 'id_poster', $id);
 		}
 	}
 

@@ -124,7 +124,7 @@
                                 {foreach $pictures as $picture}
                                     {if $picture->id_poster == $mini_inzerat->id}
                                         <div class="item {if $prvni==1} active <?php $prvni = 0;?> {/if}?>">
-                                            <img src="images/products/{$picture->name}.{$picture->extension}" alt="...">
+                                            <img src="images/{$picture->name}.{$picture->extension}" alt="...">
                                         </div>
                                     {/if}
                                 {/foreach}

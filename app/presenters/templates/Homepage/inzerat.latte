@@ -55,17 +55,11 @@
     <h4> <b>Galerie</b> </h4>
       <!-- The container for the list of example images -->
       <div id="links">
-          <a href="images/lednicka1.jpg" title="1. obrázek" data-gallery>
-            <img src="images/thumbnails/lednicka1.jpg" alt="1. obrázek">
-          </a>
-
-          <a href="images/lednicka2.jpg" title="2. obrázek" data-gallery>
-            <img src="images/thumbnails/lednicka2.jpg" alt="2. obrázek">
-          </a>
-
-          <a href="images/lednicka3.jpg" title="3. obrázek" data-gallery>
-            <img src="images/thumbnails/lednicka3.jpg" alt="3. obrázek">
-          </a>
+        {foreach $pictures as $picture}
+            <a href="images/{$picture->name}.{$picture->extension}" title="{$picture->popis}" data-gallery>
+              <img src="images/thumbnails/{$picture->name}.{$picture->extension}" alt="{$picture->popis}">
+            </a>
+        {/foreach}
       </div>
 
     <br>
