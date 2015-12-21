@@ -51,6 +51,7 @@ body {
 
 .modal .modal-content{background-color: #f8f8f8;}
 a{outline: none !important;}
+.navbar_otherButtons {font-weight: bold;}
 
 .kat1 {
     background-color: #e53e1b;

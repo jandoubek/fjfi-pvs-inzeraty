@@ -48,7 +48,7 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-left navbar_menu">
                     {foreach $kategorie as $kategorie_i}
-                    <li><a style="color: #{$kategorie_i->barva}" n:href="Homepage:default, $kategorie_i->id"> {$kategorie_i->nazev} </a></li>
+                    <li><a style="color: #{$kategorie_i->barva};" n:href="Homepage:default, $kategorie_i->id" class="navbar_kategorie"> {$kategorie_i->nazev} </a></li>
                     {/foreach}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -62,23 +62,23 @@
                     </li>-->
                     {if ($user->loggedIn)}
                         <li>
-                            <a data-toggle="modal" n:href="Homepage:inzerat, 0, $user->id"  data-target="#inzerat_modal">Nový inzerát</a>
+                            <a class="navbar_otherButtons" data-toggle="modal" n:href="Homepage:inzerat, 0, $user->id"  data-target="#inzerat_modal">Nový inzerát</a>
                         </li>
                         <li>
-                            <a data-toggle="modal" n:href="Homepage:myPosters" data-target="#myPosters_modal">Moje inzeráty</a>
+                            <a class="navbar_otherButtons" data-toggle="modal" n:href="Homepage:myPosters" data-target="#myPosters_modal">Moje inzeráty</a>
                         </li>
                         <li>
-                            <a data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a>
+                            <a class="navbar_otherButtons" data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a>
                         </li>
                         <li>
-                            <a n:href="Homepage:logout" data-target="#logout_modal">odhlásit</a>
+                            <a class="navbar_otherButtons" n:href="Homepage:logout" data-target="#logout_modal">Odhlásit</a>
                         </li>
                     {else}
                         <li>
-                            <a data-toggle="modal" data-target="#login_modal" href="homepage/login">přihlásit</a>
+                            <a class="navbar_otherButtons" data-toggle="modal" data-target="#login_modal" href="homepage/login">Přihlásit</a>
                         </li>
                         <li>
-                            <a data-toggle="modal" href="homepage/register" data-target="#register_modal">registrovat</a>
+                            <a class="navbar_otherButtons" data-toggle="modal" href="homepage/register" data-target="#register_modal">Registrovat</a>
                         </li>
                     {/if}
                 </ul>
