@@ -49,6 +49,8 @@ body {
 .inzerat_miniatura .caption .mini_body{ color: #161616; padding-top: 1em;}
 .inzerat_miniatura img{ max-height: 100px; width: auto; margin-left: auto; margin-right: auto; margin-top: 1.2em;}
 
+.modal .modal-content{background-color: #f8f8f8;}
+
 .kat1 {
     background-color: #e53e1b;
 }
