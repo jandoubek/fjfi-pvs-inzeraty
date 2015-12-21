@@ -63,6 +63,17 @@ class HomepagePresenter extends BasePresenter {
 		$profile = array(
 			'nickname' => 'pribyto');
 
+		if (($this->template->vybranakat==null) and ($idkat==10)) //kliknuto na Moje inzeráty
+		{
+		$this->template->vybranakat= (object) array(
+			'nazev' => 'Moje inzeráty',
+			'id' => 10);
+
+
+			//->nazev='Moje inzeráty';
+		//$this->template->vybranakat->id=10;
+		}
+
 		$this->template->prihlasen = $prihlasen;
 
 		$this->template->profile = $profile;
@@ -97,7 +108,7 @@ class HomepagePresenter extends BasePresenter {
 				'value' => ''
 			);
 
-			$form['id_inzerat']->value = $id; // novy inzerat ($id == 0) 
+			$form['id_inzerat']->value = $id; // novy inzerat ($id == 0)
 			$this->template->inzerat = $inzerat;
 			$this->template->autor_id = 0;
 			$this->template->autor_nickname = NULL;
@@ -114,14 +125,14 @@ class HomepagePresenter extends BasePresenter {
 			// jedna se o editaci, nahraji tedy do formu data editovaneho inzeratu
 			$form['id_inzerat']->value = $id;
 			$form->setDefaults($this->template->inzerat);
-			
+
 			// (1) $this->template->nazevKategorie = $this->database->findById('kategorie', $this->template->inzerat->id_kategorie)->nazev; <- fuj (Roman)
 			$this->template->nazevKategorie = $this->template->inzerat->kategorie->nazev; // lepsi verze zapisu nahore, vyuziti elegance FK a ORM db
 			$this->template->autor_id = $this->template->inzerat->id_user;
 			// (2) $this->template->autor_nickname = $this->database->findById('user', $this->template->inzerat->id_user)->nickname;
-			$this->template->autor_nickname = $this->template->inzerat->user->nickname; 
-			// 1 a 2 netreba ukladat zvlast do promennych, v template k nim lze pristupovat stejne jako jsem naznacil u obou promennych o radek nize 
-			
+			$this->template->autor_nickname = $this->template->inzerat->user->nickname;
+			// 1 a 2 netreba ukladat zvlast do promennych, v template k nim lze pristupovat stejne jako jsem naznacil u obou promennych o radek nize
+
 			$this->template->comments = $this->database->find('komenty', 'id_poster', $id);
 		}
 	}
@@ -135,7 +146,7 @@ class HomepagePresenter extends BasePresenter {
 	}
 
 	public function handleDeactivateMyPoster($id) {
-        
+
         $poster = $this->database->findById('poster', $id);
         $data['expire'] = $poster->added; // nastavim mu datum vyprseni stejny jako datum pridani, coz inzerat presune do inaktivity
         $poster->update($data);
@@ -146,7 +157,7 @@ class HomepagePresenter extends BasePresenter {
     }
 
     public function handleActivateMyPoster($id) {
-        
+
         $poster = $this->database->findById('poster', $id);
         $data['expire'] = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 30 day")); // pokud uzivatel bude chtit inzerat dodatecne prodlouzit tak, uz jen o mesic
         $poster->update($data);
