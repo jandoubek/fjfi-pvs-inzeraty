@@ -106,7 +106,7 @@
             {foreach $inzeraty as $mini_inzerat}
             {if ($vybranakat==null or $vybranakat->id==$mini_inzerat->id_kategorie)}
                 <div class="thumbnail inzerat_miniatura kat{$mini_inzerat->id_kategorie}">
-                    <a data-toggle="modal" n:href="Homepage:inzerat, $mini_inzerat->id, $user->id" data-target="#inzerat_modal" style="padding: 0; outline: none;">
+                    <a data-toggle="modal" n:href="Homepage:inzerat, $mini_inzerat->id, $user->id" data-target="#inzerat_modal" style="padding: 0;">
                     {if true} <!--  $mini_inzerat->pictures != null -->
                         <div class="caption">
                             <h4 class="pull-right">{$mini_inzerat->value|truncate:12}</h4>

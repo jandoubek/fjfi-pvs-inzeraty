@@ -50,6 +50,7 @@ body {
 .inzerat_miniatura img{ max-height: 100px; width: auto; margin-left: auto; margin-right: auto; margin-top: 1.2em;}
 
 .modal .modal-content{background-color: #f8f8f8;}
+a{outline: none !important;}
 
 .kat1 {
     background-color: #e53e1b;
