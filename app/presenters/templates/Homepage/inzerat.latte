@@ -56,8 +56,8 @@
       <!-- The container for the list of example images -->
       <div id="links">
         {foreach $pictures as $picture}
-            <a href="images/{$picture->name}.{$picture->extension}" title="{$picture->popis}" data-gallery>
-              <img src="images/thumbnails/{$picture->name}.{$picture->extension}" alt="{$picture->popis}">
+            <a href="images/{$picture->name}.{$picture->extension}" title="{if !empty($picture->popis)} {$picture->popis} {/if}" data-gallery>
+              <img src="images/thumbnails/{$picture->name}.{$picture->extension}" alt="{if !empty($picture->popis)} {$picture->popis} {/if}">
             </a>
         {/foreach}
       </div>
