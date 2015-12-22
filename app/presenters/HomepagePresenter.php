@@ -43,7 +43,7 @@ class HomepagePresenter extends BasePresenter {
 
 	/* --- --- RENDER METODY PRESENTERU --- --- */
 	public function renderDefault($idkat = 0) {
-		$this->template->inzeraty = $this->database->findAll('poster')->where('NOW() <= expire')->order('added DESC'); //expire
+		$this->template->inzeraty =$this->database->findAll('inzeraty')->where('NOW() <= expire')->order('added DESC'); //expire
 		$this->template->kategorie = $this->database->findAll('kategorie');
 		$this->template->vybranakat = $this->database->findById('kategorie',$idkat);
 		$this->template->dbUser = $this->database->findById('user', 1);
