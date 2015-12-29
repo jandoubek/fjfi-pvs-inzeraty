@@ -42,8 +42,13 @@ class HomepagePresenter extends BasePresenter {
 	}
 
 	/* --- --- RENDER METODY PRESENTERU --- --- */
-	public function renderDefault($idkat = 0) {
-		$this->template->inzeraty =$this->database->findAll('inzeraty')->where('NOW() <= expire')->order('added DESC'); //expire
+	public function renderDefault($idkat = 0, $page = 1) {
+		$this->template->paginator = new Nette\Utils\Paginator;
+		$this->template->paginator->setItemCount(11); // celkový počet položek (např. článků)
+		$this->template->paginator->setItemsPerPage(3); // počet položek na stránce
+		$this->template->paginator->setPage($page);
+
+		$this->template->inzeraty =$this->database->findAll('inzeraty')->where('NOW() <= expire')->order('added DESC')->limit($this->template->paginator->getLength(), $this->template->paginator->getOffset()); //expire
 		$this->template->kategorie = $this->database->findAll('kategorie');
 		$this->template->vybranakat = $this->database->findById('kategorie',$idkat);
 		$this->template->dbUser = $this->database->findById('user', 1);

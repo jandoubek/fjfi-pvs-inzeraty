@@ -152,25 +152,23 @@
             <div class="col-lg-12">
                 <ul class="pagination">
                     <li>
-                        <a href="#">&laquo;</a>
+                        <a href="{link Homepage:default 0,1}">&laquo;</a>
                     </li>
+                    {for $i = max(1,$paginator->page-2); $i <= $paginator->page-1; $i++}
+                        <li>
+                            <a href="{link Homepage:default 0,$i}">{$i}</a>     <!-- $idkat -->
+                        </li>
+                    {/for}
                     <li class="active">
-                        <a href="#">1</a>
+                        <a href="#">{$paginator->page}</a>
                     </li>
+                    {for $i = $paginator->page+1; $i <= min($paginator->page+2,$paginator->getPageCount()); $i++}
+                        <li>
+                            <a href="{link Homepage:default 0,$i}">{$i}</a>
+                        </li>
+                    {/for}
                     <li>
-                        <a href="#">2</a>
-                    </li>
-                    <li>
-                        <a href="#">3</a>
-                    </li>
-                    <li>
-                        <a href="#">4</a>
-                    </li>
-                    <li>
-                        <a href="#">5</a>
-                    </li>
-                    <li>
-                        <a href="#">&raquo;</a>
+                        <a href="{link Homepage:default 0, $paginator->getLastPage()}">&raquo;</a>
                     </li>
                 </ul>
             </div>
