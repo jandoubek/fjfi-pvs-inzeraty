@@ -44,11 +44,22 @@ class HomepagePresenter extends BasePresenter {
 	/* --- --- RENDER METODY PRESENTERU --- --- */
 	public function renderDefault($idkat = 0, $page = 1) {
 		$this->template->paginator = new Nette\Utils\Paginator;
-		$this->template->paginator->setItemCount(11); // celkový počet položek (např. článků)
 		$this->template->paginator->setItemsPerPage(3); // počet položek na stránce
 		$this->template->paginator->setPage($page);
 
-		$this->template->inzeraty =$this->database->findAll('inzeraty')->where('NOW() <= expire')->order('added DESC')->limit($this->template->paginator->getLength(), $this->template->paginator->getOffset()); //expire
+		if ($idkat == 0) {
+			$this->template->paginator->setItemCount($this->database->findAll('inzeraty')->where('NOW() <= expire')->count("*"));
+			$this->template->inzeraty =$this->database->findAll('inzeraty')->where('NOW() <= expire')->order('added DESC')->limit($this->template->paginator->getLength(), $this->template->paginator->getOffset());
+		}
+		elseif ($idkat == 10) {
+				$this->template->paginator->setItemCount($this->database->findAll('inzeraty')->where('NOW() <= expire AND id_user = ?',$this->user->id)->count("*"));
+				$this->template->inzeraty =$this->database->findAll('inzeraty')->where('NOW() <= expire AND id_user = ?',$this->user->id)->order('added DESC')->limit($this->template->paginator->getLength(), $this->template->paginator->getOffset());
+			}
+			else {
+				$this->template->paginator->setItemCount($this->database->findAll('inzeraty')->where('NOW() <= expire AND id_kategorie = ?',$idkat)->count("*"));
+				$this->template->inzeraty =$this->database->findAll('inzeraty')->where('NOW() <= expire AND id_kategorie = ?',$idkat)->order('added DESC')->limit($this->template->paginator->getLength(), $this->template->paginator->getOffset());
+			}
+
 		$this->template->kategorie = $this->database->findAll('kategorie');
 		$this->template->vybranakat = $this->database->findById('kategorie',$idkat);
 		$this->template->dbUser = $this->database->findById('user', 1);
