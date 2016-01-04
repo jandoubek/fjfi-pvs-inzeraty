@@ -15,26 +15,34 @@
 	</div>
 {form profile}
 	<div class="modal-body">
+			{if $user->id != $profile->id}
+				{var $readonly = readonly}
+			{else}
+				{var $readonly = ''}
+			{/if}
+
 		<div class="input-group col-xs-10 col-sm-offset-1" style="margin-bottom: 1em;">
 		  <span class="input-group-addon" id="profile_email" style="width: 7em">Email</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_email" name="profile_email_input" value="{$profile->email}">
+		  <input type="text" class="form-control" placeholder="Nevyplněno" {$readonly|noescape} aria-describedby="profile_email" name="profile_email_input" value="{$profile->email}">
 		</div>
 		<div class="input-group col-xs-10 col-sm-offset-1 mar-input" style="margin-bottom: 1em;">
 		  <span class="input-group-addon" id="profile_telefon" style="width: 7em">Telefon</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_telefon" name="profile_telephone_input" value="{$profile->phone}">
+		  <input type="text" class="form-control" placeholder="Nevyplněno" {$readonly|noescape} aria-describedby="profile_telefon" name="profile_telephone_input" value="{$profile->phone}">
 		</div>
 		<div class="input-group col-xs-10 col-sm-offset-1 mar-input" style="margin-bottom: 1em;">
 		  <span class="input-group-addon" id="profile_address" style="width: 7em">Adresa</span>
-		  <input type="text" class="form-control" placeholder="Nevyplněno" aria-describedby="profile_address" name="profile_address_input" value="{$profile->address}">
+		  <input type="text" class="form-control" placeholder="Nevyplněno" {$readonly|noescape} aria-describedby="profile_address" name="profile_address_input" value="{$profile->address}">
 		</div><br />
 		<div class="form-group input-group col-xs-10 col-sm-offset-1">
 		  <label for="profile_comment">Komentář ke kontaktům a profilu:</label>
-		  <textarea class="form-control" rows="4" id="profile_comment" placeholder="Nevyplněno" name="profile_comment_input">{$profile->comment}</textarea>
+		  <textarea class="form-control" rows="4" id="profile_comment" {$readonly|noescape} placeholder="Nevyplněno" name="profile_comment_input">{$profile->comment}</textarea>
 		</div>
 	</div>
 
 	<div class="modal-footer">
-		{input send}
+		{if $user->id == $profile->id}
+			{input send}
+		{/if}
 	</div><!--- akce po stisknutí tlačítka v ProfileFormFactory.php -->
     {/form}
 <!---    -->
