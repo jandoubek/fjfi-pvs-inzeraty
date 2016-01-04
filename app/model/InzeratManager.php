@@ -36,7 +36,6 @@ class InzeratManager {
   }
 
   public function uloz_inzerat($id){
-    $this->delete_photos($id);
     $this->inzerat['expire'] = date('Y-m-d',strtotime(date("Y-m-d", time()) . " + 30 day"));
     unset($this->inzerat['bodyEdit']);
     $inzerat = $this->inzerat;
@@ -46,6 +45,8 @@ class InzeratManager {
   }
 
   private function update_photos($id_inzerat){ // remove and upload new photos
+    if(empty($this->inzerat['photo'])) return;
+
     $this->delete_photos($id_inzerat);
     $this->upload_photos($id_inzerat);
   }

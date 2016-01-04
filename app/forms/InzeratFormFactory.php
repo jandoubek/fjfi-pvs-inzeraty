@@ -61,9 +61,9 @@ class InzeratFormFactory extends Nette\Object {
 			->setAttribute('class', 'form-control')
 			->setAttribute('placeholder', 'Nevyplněno');
 
-		$form->addMultiUpload('photo', 'Fotky:')
-			->addRule(Form::IMAGE, 'Obrázek musí být JPEG, PNG nebo GIF.')
-			->addRule(Form::MAX_FILE_SIZE, 'Maximální velikost obrázku je 4MB', 4 * 1000 * 1024);
+		$form->addMultiUpload('photo', 'Fotky:');
+			//->addRule(Form::IMAGE, 'Obrázek musí být JPEG, PNG nebo GIF.')
+			//->addRule(Form::MAX_FILE_SIZE, 'Maximální velikost obrázku je 4MB', 4 * 1000 * 1024);
 
 		$form->addText('value', 'Cena:')
 			//->addRule(Form::FLOAT, 'Cena musí být číslo')    NEFUNGUJE NEVIM PROC
