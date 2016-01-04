@@ -21,11 +21,20 @@
       }
 
       .image_thumbnail{
-        display: block;
         max-width:230px;
         max-height:95px;
         width: auto;
         height: auto;
+      }
+
+      .text_header{
+        text-align: center;
+        vertical-align: middle;
+        margin-bottom: 0.65em;
+      }
+
+      h4 {
+        margin-bottom: 1em;
       }
     </style>
   </meta>
@@ -36,35 +45,41 @@
   {form inzerat}
 
   <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-      {if $user->id == $autor_id || $autor_id == 0}
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      {if $user->id == $autor_id || $inzerat->id == 0}
+        <h3 class="modal-title text_header">{if $inzerat->id == 0}Nový inzerát{else}Úprava inzerátu{/if}</h3>
         <div class="input-group col-xs-10">
-          <b>Název inzerátu:<br> </b>
+          <span class="input-group-addon" style="width: 11em"><b>Název inzerátu:</b></span>
             {input title}
         </div>
       {else}
-        <b><h3>{$inzerat->title}<br> </h3></b>
+        <b><h3 class="modal-title" style="margin-bottom: 0.2em"><b>{$inzerat->title}</b><br> </h3></b>
         Publikoval: <b><a data-toggle="modal" n:href="Homepage:profile, $autor_id" data-target="#inzerat_profile_modal" style="padding: 0; outline: none;">{$autor_nickname}</a></b>
       {/if}
   </div>
 
   <div class="modal-body">
-     <label for="popis">Kategorie:  </label>
-    {if $user->id == $autor_id || $autor_id == 0}
-
-      {input id_kategorie}
+    {if $user->id == $autor_id || $inzerat->id == 0}
+      <div class="input-group col-xs-6">
+        <span class="input-group-addon" style="width: 11em"><b>Kategorie:</b></span>
+        {input id_kategorie}
+      </div>
     {else}
-      <b>{$nazevKategorie}</b>
+      Kategorie: <b>{$nazevKategorie}</b>
     {/if}
 
+    <br />
+    <br />
+
     <h4><b>Galerie</b></h4>
-    {if $user->id == $inzerat->id_user || $autor_id == 0}
+    {if $user->id == $inzerat->id_user || $inzerat->id == 0}
       <div class="input-group">
-        <span class="input-group-addon" id="file" style="width: 7em"><b>Obrázky k inzerátu:</b></span>
+        <span class="input-group-addon" id="file" style="width: 7em"><b>Přiložené obrázky:</b></span>
         {input photo}
       </div>
     {/if}
       <!-- The container for the list of example images -->
+      {if $inzerat->id != 0}
       <div id="links">
         {foreach $pictures as $picture}
             <a href="images/{$picture->id}.{$picture->extension}" title="{$picture->name}" data-gallery>
@@ -72,8 +87,8 @@
             </a>
         {/foreach}
       </div>
-
-    <br>
+      <br />
+    {/if}
     <!-- The Bootstrap Image Gallery lightbox, should be a child element of the document body -->
     <div id="blueimp-gallery" class="blueimp-gallery">
         <!-- The container for the modal slides -->
@@ -109,27 +124,20 @@
         </div>
     </div>
 
-<!--  {if $user->id == $inzerat->id_user}
-    <div class="form-group">
-      <label for="vlozObr">Vložit obrázek do galerie</label>
-      <input type="file" id="vlozObr">
-      <br>
-      <button type="submit" class="btn btn-default">Vložit</button>
-    </div>
-  {/if}
--->
-  <label for="popis">Popis</label>
-  <br>
+
+  <br />
+  <h4><b>Popis</b></h4>
   {if ($inzerat->id == 0) || ($user->id == $inzerat->id_user)}
       {input body}
   {else}
       {$inzerat->body}
   {/if}
-  <br>
+  <br />
+  <br />
 
   <div class="input-group">
         <span class="input-group-addon" id="cena" style="width: 7em"><b>Cena</b></span>
-          {if ($user->id == $autor_id) || ($autor_id == 0)}
+          {if ($user->id == $autor_id) || ($inzerat->id == 0)}
               {input value}
           {else}
             <input readonly type="text" class="form-control" name="value" value="{$inzerat->value}"   style="color: black; background-color: white">
@@ -140,27 +148,10 @@
     {input id_inzerat}
   </div>
 
-  {if $inzerat->id != 0}
-  <br><br>
-
-    <h4> Diskuze </h4>
-
-    {foreach $comments as $komentar}
-        <label for="prispevek">{$komentar->jmeno} {$komentar->prijm}, {$komentar->datum}</label>
-        <textarea readonly class="form-control" rows="auto" style="color: black; background-color: white">
-{$komentar->body}
-        </textarea>
-    {/foreach}
-    <!-- pozor dva formulare v sobe se triskaj, je treba to nejak fixnout a to tak, že nejdriv je nutne uzavrit jeden form a
-    po te druhy, nelze je vkladat do sebe (Roman)
-        <br>
-        <h4> Přidat komentář</h4>
-        {*control comment*} -->
-  {/if}
   </div> <!-- modal-body -->
 
   <div class="modal-footer">
-    {if $user->id == $autor_id || $autor_id == 0}
+    {if $user->id == $autor_id || $inzerat->id == 0}
       {input send}
     {/if}
   </div>

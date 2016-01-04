@@ -50,7 +50,8 @@ class InzeratFormFactory extends Nette\Object {
 		    '4'  => 'Jine',
 		);
 
-		$form->addSelect('id_kategorie', 'Vyberte kategorii:', $kategorie);
+		$form->addSelect('id_kategorie', 'Vyberte kategorii:', $kategorie)
+			->setAttribute('class','form-control');
 
 		$form->addTextArea('body', 'Popis:')
 			->setAttribute('class', 'form-control')

@@ -4,7 +4,7 @@
   <!--- modal-header, modal-body a modal-footer tvori strukturu PopUpu pomoci bootstrap  -->
 	<div class="modal-header">
 		<button type="button" class="close" data-dismiss="modal">&times;</button>
-	  <h4 class="modal-title">Moje inzeráty</h4>
+	  <h4 class="modal-title">Soupiska inzerátů</h4>
 	</div>
     {snippet myposters}
         <div class="modal-body">
@@ -25,7 +25,7 @@
                 {else}
                     <p>Nemáte, žádné aktivní inzeráty.</p>
                 {/if isset($ap)}
-            
+
             </div>
             <div id="inactive-posters">
 
@@ -58,7 +58,7 @@
     h5 { font-size: 1.2em; color: darkblue;}
     table.posters { width: 96%; margin: 0.5em 2%; }
     table.posters tr:nth-child(2n+1) td { background: #EEE;}
-    table.posters tr:hover td { background: lightyellow;} 
+    table.posters tr:hover td { background: lightyellow;}
     table.posters tr td:first-child { border-top-left-radius: 4px; border-bottom-left-radius: 4px;}
     table.posters tr td:last-child { border-top-right-radius: 4px; border-bottom-right-radius: 4px; text-align: center;}
 </style>

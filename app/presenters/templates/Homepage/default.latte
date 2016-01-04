@@ -52,6 +52,7 @@
                     {/foreach}
                     {if ($user->loggedIn)}
                     <li><a style="color: white" n:href="Homepage:default, 10"> Moje inzeráty</a></li>
+                    <li><a style="color: white" class="navbar_otherButtons" data-toggle="modal" n:href="Homepage:myPosters" data-target="#myPosters_modal">Soupiska inzerátů</a></li>
                     {/if}
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -66,9 +67,6 @@
                     {if ($user->loggedIn)}
                         <li>
                             <a class="navbar_otherButtons" data-toggle="modal" n:href="Homepage:inzerat, 0, $user->id"  data-target="#inzerat_modal">Nový inzerát</a>
-                        </li>
-                        <li>
-                            <a class="navbar_otherButtons" data-toggle="modal" n:href="Homepage:myPosters" data-target="#myPosters_modal">Moje inzeráty</a>
                         </li>
                         <li>
                             <a class="navbar_otherButtons" data-toggle="modal" n:href="Homepage:profile, $user->id" data-target="#profile_modal">{$user->identity->nickname}</a>

@@ -44,7 +44,7 @@ class HomepagePresenter extends BasePresenter {
 	/* --- --- RENDER METODY PRESENTERU --- --- */
 	public function renderDefault($idkat = 0, $page = 1) {
 		$this->template->paginator = new Nette\Utils\Paginator;
-		$this->template->paginator->setItemsPerPage(3); // počet položek na stránce
+		$this->template->paginator->setItemsPerPage(9); // počet položek na stránce
 		$this->template->paginator->setPage($page);
 
 		if ($idkat == 0) {
