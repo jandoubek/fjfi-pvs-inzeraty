@@ -19,6 +19,14 @@
         list-style:none;
         margin-bottom:10px;
       }
+
+      .image_thumbnail{
+        display: block;
+        max-width:230px;
+        max-height:95px;
+        width: auto;
+        height: auto;
+      }
     </style>
   </meta>
 </head>
@@ -33,7 +41,6 @@
         <div class="input-group col-xs-10">
           <b>Název inzerátu:<br> </b>
             {input title}
-
         </div>
       {else}
         <b><h3>{$inzerat->title}<br> </h3></b>
@@ -44,20 +51,24 @@
   <div class="modal-body">
      <label for="popis">Kategorie:  </label>
     {if $user->id == $autor_id || $autor_id == 0}
+
       {input id_kategorie}
     {else}
       <b>{$nazevKategorie}</b>
     {/if}
 
-  {if $user->id == $inzerat->id_user || $autor_id == 0}
-    <!-- pak pridat editovatelnou galerii -->
-  {else}
-    <h4> <b>Galerie</b> </h4>
+    <h4><b>Galerie</b></h4>
+    {if $user->id == $inzerat->id_user || $autor_id == 0}
+      <div class="input-group">
+        <span class="input-group-addon" id="file" style="width: 7em"><b>Obrázky k inzerátu:</b></span>
+        {input photo}
+      </div>
+    {/if}
       <!-- The container for the list of example images -->
       <div id="links">
         {foreach $pictures as $picture}
-            <a href="images/{$picture->name}.{$picture->extension}" title="{if !empty($picture->popis)} {$picture->popis} {/if}" data-gallery>
-              <img src="images/thumbnails/{$picture->name}.{$picture->extension}" alt="{if !empty($picture->popis)} {$picture->popis} {/if}">
+            <a href="images/{$picture->id}.{$picture->extension}" title="{$picture->name}" data-gallery>
+              <img src="images/{$picture->id}.{$picture->extension}" alt="{$picture->name}" class="image_thumbnail">
             </a>
         {/foreach}
       </div>
@@ -97,9 +108,6 @@
             </div>
         </div>
     </div>
-    <br>
-    <br>
-  {/if}
 
 <!--  {if $user->id == $inzerat->id_user}
     <div class="form-group">
@@ -110,8 +118,6 @@
     </div>
   {/if}
 -->
-  <br>
-  <br>
   <label for="popis">Popis</label>
   <br>
   {if ($inzerat->id == 0) || ($user->id == $inzerat->id_user)}

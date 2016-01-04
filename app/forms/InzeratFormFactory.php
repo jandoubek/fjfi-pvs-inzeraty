@@ -30,7 +30,7 @@ class InzeratFormFactory extends Nette\Object {
 	 */
 	public function create($id = null) {
 		$form = new Form;
-		
+
 		$form->addtext('id_inzerat', 'Id inzerátu');
 
 		$form->addText('title', 'Název inzerátu:')
@@ -48,7 +48,7 @@ class InzeratFormFactory extends Nette\Object {
 		    '2' => 'Akce',
 		    '3'  => 'Jidlo',
 		    '4'  => 'Jine',
-		);		
+		);
 
 		$form->addSelect('id_kategorie', 'Vyberte kategorii:', $kategorie);
 
@@ -59,6 +59,10 @@ class InzeratFormFactory extends Nette\Object {
 		$form->addTextArea('bodyEdit', 'Popis:')
 			->setAttribute('class', 'form-control')
 			->setAttribute('placeholder', 'Nevyplněno');
+
+		$form->addMultiUpload('photo', 'Fotky:')
+			->addRule(Form::IMAGE, 'Obrázek musí být JPEG, PNG nebo GIF.')
+			->addRule(Form::MAX_FILE_SIZE, 'Maximální velikost obrázku je 4MB', 4 * 1000 * 1024);
 
 		$form->addText('value', 'Cena:')
 			//->addRule(Form::FLOAT, 'Cena musí být číslo')    NEFUNGUJE NEVIM PROC
@@ -83,7 +87,7 @@ class InzeratFormFactory extends Nette\Object {
 		$inzeratManager = new Model\InzeratManager($values, $this->database);
 		// Tady jedine co, tak je treba rozlisit kdy zavolat zaloz inzerat a kdy uloz_inzerat. A to na zaklade ID inzeratu (zda NULL ci ne), nevím jak to zjistím.
 		if ($id_inzerat == 0) {
-			$inzeratManager->zaloz_inzerat();	
+			$inzeratManager->zaloz_inzerat();
 		} else {
 			$inzeratManager->uloz_inzerat($id_inzerat);
 		}
