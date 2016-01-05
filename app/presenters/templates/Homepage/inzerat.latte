@@ -46,7 +46,7 @@
 
   <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">&times;</button>
-      {if $user->id == $autor_id || $inzerat->id == 0}
+      {if $user->isLoggedIn() && ($user->id == $autor_id || $inzerat->id == 0)}
         <h3 class="modal-title text_header">{if $inzerat->id == 0}Nový inzerát{else}Úprava inzerátu{/if}</h3>
         <div class="input-group col-xs-10">
           <span class="input-group-addon" style="width: 11em"><b>Název inzerátu:</b></span>
@@ -59,7 +59,7 @@
   </div>
 
   <div class="modal-body">
-    {if $user->id == $autor_id || $inzerat->id == 0}
+    {if $user->isLoggedIn() && ($user->id == $autor_id || $inzerat->id == 0)}
       <div class="input-group col-xs-6">
         <span class="input-group-addon" style="width: 11em"><b>Kategorie:</b></span>
         {input id_kategorie}
@@ -72,7 +72,7 @@
     <br />
 
     <h4><b>Galerie</b></h4>
-    {if $user->id == $inzerat->id_user || $inzerat->id == 0}
+    {if $user->isLoggedIn() && ($user->id == $inzerat->id_user || $inzerat->id == 0)}
       <div class="input-group">
         <span class="input-group-addon" id="file" style="width: 7em"><b>Přiložené obrázky:</b></span>
         {input photo}
@@ -132,7 +132,7 @@
 
   <br />
   <h4><b>Popis</b></h4>
-  {if ($inzerat->id == 0) || ($user->id == $inzerat->id_user)}
+  {if $user->isLoggedIn() && (($inzerat->id == 0) || ($user->id == $inzerat->id_user))}
       {input body}
   {else}
       {$inzerat->body}
@@ -142,7 +142,7 @@
   <br />
   <div class="input-group">
         <span class="input-group-addon" id="cena" style="width: 7em"><b>Cena</b></span>
-          {if ($user->id == $autor_id) || ($inzerat->id == 0)}
+          {if $user->isLoggedIn() && ($user->id == $autor_id || $inzerat->id == 0)}
               {input value}
           {else}
             <input readonly type="text" class="form-control" name="value" value="{$inzerat->value}"   style="color: black; background-color: white">
@@ -156,7 +156,7 @@
   </div> <!-- modal-body -->
 
   <div class="modal-footer">
-    {if $user->id == $autor_id || $inzerat->id == 0}
+    {if $user->isLoggedIn() && ($user->id == $autor_id || $inzerat->id == 0)}
       {input send}
     {/if}
   </div>
