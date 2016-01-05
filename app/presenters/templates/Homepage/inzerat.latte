@@ -80,6 +80,12 @@
     {/if}
       <!-- The container for the list of example images -->
       {if $inzerat->id != 0}
+      {if $any_pictures == 0}
+        Nejsou přiloženy žádné obrázky.
+        <br />
+        <br />
+        <br />
+      {/if}
       <div id="links">
         {foreach $pictures as $picture}
             <a href="images/{$picture->id}.{$picture->extension}" title="{$picture->name}" data-gallery>
@@ -124,7 +130,6 @@
         </div>
     </div>
 
-
   <br />
   <h4><b>Popis</b></h4>
   {if ($inzerat->id == 0) || ($user->id == $inzerat->id_user)}
@@ -134,7 +139,7 @@
   {/if}
   <br />
   <br />
-
+  <br />
   <div class="input-group">
         <span class="input-group-addon" id="cena" style="width: 7em"><b>Cena</b></span>
           {if ($user->id == $autor_id) || ($inzerat->id == 0)}

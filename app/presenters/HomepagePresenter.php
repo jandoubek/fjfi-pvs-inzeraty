@@ -110,6 +110,7 @@ class HomepagePresenter extends BasePresenter {
 			$this->template->autor_id = 0;
 			$this->template->autor_nickname = NULL;
 			$this->template->comments = NULL;
+			$this->template->any_pictures = 0;
 		}
 		else{ // prohlizeni/ editace inzeratu
 
@@ -133,6 +134,7 @@ class HomepagePresenter extends BasePresenter {
 			$this->template->comments = $this->database->find('komenty', 'id_poster', $id);
 
 			$this->template->pictures = $this->database->find('image', 'id_poster', $id);
+			$this->template->any_pictures = count($this->template->pictures);
 		}
 	}
 
